@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title translate="common.title"></title>
+
+    <link rel="stylesheet" href="media/css/style.css"/>
+
+    <script type="text/javascript" src="dist/app.js"></script>
+</head>
+<body>
+
+
+<header class="cs-3">
+    <aside class="col-left brand">
+        <a class="navbar-brand" href="#">
+            <span translate="common.title"></span>
+        </a>
+    </aside>
+    <aside class="col-main">
+        <ul class="nav navbar-nav navbar-left" ui-view="header"></ul>
+    </aside>
+    <aside class="col-right">
+        <ul class="nav navbar-nav navbar-right ng-hide" ng-controller="SecurityLoginController" ng-show="isLoggedIn()">
+            <li class="ng-hide" ng-show="!isInBaseState['profile']" is-in-base-state="base">
+                <a ui-sref="profile.user.data" class="badge-holder" title="{{ 'nav.profile.title' | translate }}">
+                    <i class="fa fa-cog"></i>
+                    <span translate="nav.profile.label"></span>
+                    <span ng-if="reviewCount() > 0" class="review-badge">{{reviewCount()}}</span>
+                </a>
+            </li>
+            <li class="ng-hide" ng-show="isInBaseState['profile']" is-in-base-state="profile">
+                <a href="#" title="{{ 'nav.dashboard.title' | translate }}">
+                    <i class="fa fa-dashboard"></i>
+                    <span translate="nav.dashboard.label"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#" ng-click="logout()" title="{{ 'nav.logout.title' | translate }}">
+                    <i class="fa fa-sign-out"></i>
+                    <span translate="nav.logout.label"></span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ui-view="customer-select"></ul>
+    </aside>
+</header>
+
+
+<main class="cs-1" ng-controller="CommonCacheClearController" ui-view="main"></main>
+
+
+<div class="container-fluid" id="ccc-alerts">
+    <div ng-controller="CommonAlertController">
+        <div alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</div>
+    </div>
+</div>
+
+
+</body>
+</html>
