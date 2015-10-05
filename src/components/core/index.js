@@ -65,4 +65,11 @@ module.exports = angular.module('core', [])
   //  }
   //  _results;
   //})
+
+  .config(function ($stateProvider, $translatePartialLoaderProvider) {
+    angular.forEach(RoutingConfig, function (config, name) {
+      $stateProvider.state(name, config);
+    });
+    $translatePartialLoaderProvider.addPart('core');
+  })
 ;

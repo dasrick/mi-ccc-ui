@@ -9,12 +9,13 @@ var angular = require('angular');
 
 require('angular-bootstrap');
 require('angular-ui-router');
+require('angular-translate');
+require('angular-translate-loader-partial');
+
 //require('angular-data');
 //require('angular-cache');
 //require('angular-sanitize');
 //require('angular-checklist');
-//require('angular-translate');
-//require('angular-translate-loader-partial');
 //require('angular-wizard');
 //require('angular-ui-unique');
 //require('angular-ui-validate');
@@ -27,6 +28,8 @@ require('angular-ui-router');
 var requires = [
   'ui.bootstrap',
   'ui.router',
+  'pascalprecht.translate',
+
   //'angular-data.DS',
   //'angular-cache',
   //'checklist-model',
@@ -38,7 +41,6 @@ var requires = [
   //'ngSanitize',
   //'angular-loading-bar',
   //'colorpicker.module',
-  //'pascalprecht.translate',
   //'toggle-switch',
   //require('angular-resource'),
   //require('./common').name,
@@ -60,7 +62,34 @@ var requires = [
 ];
 
 
-angular.module(appName, requires);
+angular.module(appName, requires)
+
+  .config(function ($translateProvider) {
+    $translateProvider.useSanitizeValueStrategy('escaped');
+    $translateProvider.useLoader('$translatePartialLoader', {
+      urlTemplate: '/i18n/{part}/{lang}.json'
+    });
+    // add translation table
+    $translateProvider
+      .registerAvailableLanguageKeys(['en', 'de'], {
+        'en_*': 'en',
+        'de_*': 'de'
+      })
+      .determinePreferredLanguage();
+
+    /*
+     The fallback language is not working ...
+     $translateProvider.fallbackLanguage('en');
+     The following workaround sets the preferred language to english,
+     if the detection failed or the detected language is not known.
+     */
+    var language = $translateProvider.preferredLanguage();
+    if ((language !== null) || !language.match(/(de).*/)) {
+      return $translateProvider.preferredLanguage('de');
+    }
+  })
+
+;
 
 angular.bootstrap(document, [appName]);
 //angular.element(document).ready(function () {

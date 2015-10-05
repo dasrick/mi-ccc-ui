@@ -6,11 +6,11 @@ module.exports = {
     url: '/admin',
     views: {
       'main': {
-        templateUrl: '/views/common/base.html',
+        templateUrl: '/views/core/base.html',
         controller: 'CommonBaseController'
       },
       'customer-select': {
-        templateUrl: '/views/common/customer_select.html',
+        templateUrl: '/views/core/customer_select.html',
         controller: 'CommonBaseController'
       }
     }
@@ -20,11 +20,11 @@ module.exports = {
     url: '/customer/{customerId:[0-9]{1,}}',
     views: {
       'main': {
-        templateUrl: '/views/common/base.html',
+        templateUrl: '/views/core/base.html',
         controller: 'CommonBaseController'
       },
       'customer-select': {
-        templateUrl: '/views/common/customer_select.html',
+        templateUrl: '/views/core/customer_select.html',
         controller: 'CommonBaseController'
       }
     }
@@ -33,7 +33,7 @@ module.exports = {
     url: '',
     views: {
       'data': {
-        templateUrl: '/views/common/dashboard.html'
+        templateUrl: '/views/core/dashboard.html'
       }
     }
   },
@@ -41,7 +41,7 @@ module.exports = {
     url: '/dashboard',
     views: {
       'data': {
-        templateUrl: '/views/common/dashboard.html'
+        templateUrl: '/views/core/dashboard.html'
       }
     }
   }
