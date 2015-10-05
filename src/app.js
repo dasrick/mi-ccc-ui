@@ -26,7 +26,7 @@ require('angular-ui-router');
 
 var requires = [
   'ui.bootstrap',
-  'ui.router'
+  'ui.router',
   //'angular-data.DS',
   //'angular-cache',
   //'checklist-model',
@@ -55,8 +55,8 @@ var requires = [
   //require('./log').name,
   //require('./assignment').name,
   //require('./instance').name
- // require('./../../src/shared').name,
- // require('./../../src/product').name
+  require('./shared').name,
+  require('./components').name
 ];
 
 
