@@ -12,3 +12,4 @@ node_modules
 # web app
 app/css
 app/fonts
+app/js

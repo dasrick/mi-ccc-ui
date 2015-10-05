@@ -68,12 +68,13 @@
   },
   "scripts": {
     "start": "node index.js",
-    "prebuild": "mkdir -p app/css app/fonts/font-awesome app/fonts/source-sans-pro",
-    "build": "npm run build:css && npm run build:fonts",
+    "prebuild": "mkdir -p app/css app/js app/fonts/font-awesome app/fonts/source-sans-pro",
+    "build": "npm run build:css && npm run build:fonts && npm run build:js",
     "build:css": "lessc --clean-css='--s1' --autoprefix='last 2 versions' src/media/less/style.less app/css/style.css",
     "build:fonts": "npm run build:font-fontawesome && npm run build:font-sourcesanspro",
     "build:font-fontawesome": "cp -R node_modules/font-awesome/fonts/* app/fonts/font-awesome",
     "build:font-sourcesanspro": "cp -R node_modules/npm-font-source-sans-pro/fonts/* app/fonts/source-sans-pro",
+    "build:js": "webpack -d src/app.js app/js/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
