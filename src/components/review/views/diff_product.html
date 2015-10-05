@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-sm-3">
+        <span translate>product.form.name.label</span>
+    </div>
+    <div class="col-sm-9">
+        <div class="row" ng-repeat="(lang,nameDiff) in delta.name">
+            <div class="col-sm-3">
+                <span>{{locales[lang]}}</span>
+            </div>
+            <div class="col-sm-9">
+                <span ng-class="{'bg-success': nameDiff.type == 'created', 'bg-danger diff-deleted': nameDiff.type == 'updated' || nameDiff.type == 'deleted'}">{{nameDiff.data}}</span>
+                <span ng-show="nameDiff.type == 'updated'" class="bg-success">{{draft.name | translateModel}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <span translate>product.form.features.label</span>
+    </div>
+    <div class="col-sm-9">
+        <div ng-repeat="(key,feature) in delta.features">
+            <div class="col-sm-9">
+                <span ng-class="{'bg-success': feature.name[locale].type == 'created', 'bg-danger diff-deleted': feature.name[locale].type == 'deleted'}">{{feature.name[locale].data}}</span>
+                <span ng-show="feature.name.type == 'updated'"  class="bg-success">{{draft.features[key].name | translateModel}}</span>
+                <span ng-class="{'bg-success': feature.type == 'created', 'bg-danger diff-deleted': feature.type == 'deleted'}">{{feature.data.name[locale]}}</span>
+            </div>
+        </div>
+        <span ng-show="delta.features == {}" translate>productmanagement.feature.list.empty</span>
+    </div>
+</div>
+

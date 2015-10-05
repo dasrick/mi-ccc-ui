@@ -1,0 +1,138 @@
+<form name="form" id="planForm" novalidate class="form-horizontal">
+    <div class="form-group" ng-class="{'has-error': form.title.$error.required}">
+        <label class="col-sm-3 control-label"
+               for="title" translate>plan.form.title.label</label>
+
+        <div class="col-sm-9">
+            <input id="title"
+                   name="title"
+                   type="text"
+                   class="form-control"
+                   ng-model="plan.title" required/>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"
+                           ng-model="showHosting"
+                           ng-change="deleteEntry('hosting')">{{ 'plan.form.hosting.label' | translate }}
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6"
+             ng-if="showHosting"
+             ng-class="{'has-error': form.hostingValue.$error.required}">
+            <input
+                    ng-init="plan.hosting.unit='minutes'"
+                    name="hostingValue"
+                    type="number"
+                    class="form-control"
+                    ng-model="plan.hosting.value"
+                    required/>
+        </div>
+        <div class="col-sm-3" ng-if="showHosting">
+            <p>Minuten</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"
+                           ng-model="showTraffic"
+                           ng-change="deleteEntry('traffic')">{{ 'plan.form.traffic.label' | translate }}
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6"
+             ng-if="showTraffic"
+             ng-class="{'has-error': form.trafficValue.$error.required}">
+            <input
+                    name="trafficValue"
+                    type="number"
+                    class="form-control"
+                    ng-model="plan.traffic.value"
+                    required/>
+        </div>
+        <div class="col-sm-3"
+             ng-if="showTraffic"
+             ng-class="{'has-error': form.trafficUnit.$error.required}">
+            <select class="form-control "
+                    name="trafficUnit"
+                    ng-options="id as name for (id, name) in units"
+                    ng-model="plan.traffic.unit"
+                    required></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"
+                           ng-model="showUser"
+                           ng-change="deleteEntry('user')">{{ 'plan.form.user.label' | translate }}
+                </label>
+            </div>
+            <span class="help-block" ng-show="form.validPlan.$error.validator" translate>
+                plan.form.type.help
+            </span>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6"
+             ng-if="showUser"
+             ng-class="{'has-error': form.userValue.$error.required}">
+            <input
+                    ng-init="plan.user.unit='item'"
+                    name="userValue"
+                    type="number"
+                    class="form-control"
+                    ng-model="plan.user.value"
+                    required/>
+        </div>
+    </div>
+
+    <input ng-model="validPlan" type="hidden" name="validPlan"
+           ui-validate-watch="[ 'showUser', 'showTraffic', 'showHosting']"
+           ui-validate=" 'showUser || showTraffic || showHosting'" />
+
+
+    <div ng-show="plan.id" class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="admin.plan.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+                form.reset.label
+            </button>
+            <button class="btn btn-primary" right="plan_edit" reviewable-action action="edit(reviewer)"
+                    ng-disabled="form.$invalid || plan.reviewStatus != 'none' || form.$pristine">
+                {{ 'form.save.label' | translate}}
+            </button>
+        </div>
+    </div>
+
+
+    <div class="row" ng-show="!plan.id">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="admin.plan.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+                form.reset.label
+            </button>
+            <button class="btn btn-primary" ng-click="create()"
+                    ng-disabled="form.$invalid ">
+                {{ 'form.save.label' | translate}}
+            </button>
+        </div>
+    </div>
+</form>

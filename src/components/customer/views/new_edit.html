@@ -1,0 +1,173 @@
+<form name="form" id="customerForm" class="form-horizontal" novalidate>
+    <div class="form-group" ng-class="{'has-error': form.name.$error.required}">
+        <label class="col-sm-3 control-label" for="name" translate>
+            customer.form.name.label
+        </label>
+
+        <div class="col-sm-9">
+            <input id="name" class="form-control" name="name" type="text" ng-model="customer.name" required/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="street" translate>
+            customer.form.street.label
+        </label>
+
+        <div class="col-sm-9">
+            <input id="street" class="form-control" name="street" type="text" ng-model="customer.address.street"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="zip" translate>
+            customer.form.zip.label
+        </label>
+
+        <div class="col-sm-9">
+            <input id="zip" class="form-control" name="zip" type="text" ng-model="customer.address.zip"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="city" translate>
+            customer.form.city.label
+        </label>
+
+        <div class="col-sm-9">
+            <input id="city" class="form-control" name="city" type="text" ng-model="customer.address.city"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="phone" translate>
+            customer.form.phone.label
+        </label>
+
+        <div class="col-sm-9">
+            <input id="phone" class="form-control" name="phone" type="tel" ng-model="customer.phone"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="fax" translate>
+            customer.form.fax.label
+        </label>
+
+        <div class="col-sm-9">
+            <input id="fax" class="form-control" name="fax" type="tel" ng-model="customer.fax"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>customer.form.country.label</label>
+
+        <div class="col-sm-3">
+            <ui-select ng-model="customer.selectedCountry" theme="bootstrap" ng-disabled="disabled">
+                <ui-select-match placeholder="{{'common.empty_select.label'|translate}}">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="c in countries | filter: {name: $select.search}">
+                    <div ng-bind-html="c.name | highlight: $select.search" class="option-value"></div>
+
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="type" translate>customer.form.type.label</label>
+
+        <div class="col-sm-9">
+            <select id="type" name="type" class="form-control" ng-model="customer.type"
+                    ng-options="type as type for type in types"></select>
+        </div>
+    </div>
+    <fieldset>
+        <legend translate>customer.form.contact.label</legend>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="title" translate>
+                customer.form.contact.title.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="title" class="form-control" name="title" type="text" ng-model="customer.contact.title"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="salutation" translate>
+                customer.form.contact.salutation.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="salutation" class="form-control" name="salutation" type="text"
+                       ng-model="customer.contact.salutation"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="firstName" translate>
+                customer.form.contact.firstName.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="firstName" class="form-control" name="firstName" type="text"
+                       ng-model="customer.contact.firstName"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="lastName" translate>
+                customer.form.contact.lastName.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="lastName" class="form-control" name="lastName" type="text"
+                       ng-model="customer.contact.lastName"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="email" translate>
+                customer.form.contact.email.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="email" class="form-control" name="email" type="text" ng-model="customer.contact.email"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="cPhone" translate>
+                customer.form.phone.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="cPhone" class="form-control" name="phone" type="tel" ng-model="customer.contact.phone"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="cFax" translate>
+                customer.form.fax.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="cFax" class="form-control" name="fax" type="tel" ng-model="customer.contact.fax"/>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="base.customermanagement.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn btn-primary" ng-click="save()" ng-disabled="form.$invalid" translate>
+                form.save.label
+            </button>
+        </div>
+    </div>
+
+</form>

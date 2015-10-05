@@ -1,0 +1,49 @@
+<h3 translate>review.title</h3>
+<form class="form-horizontal" ng-hide="!review">
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>common.user.label</label>
+
+        <div class="col-sm-9">
+            <input class="form-control" type="text" readonly disabled
+                   value="{{review.opener.firstName + ' ' + review.opener.lastName}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>review.action.label</label>
+
+        <div class="col-sm-9">
+            <input class="form-control" type="text" readonly disabled
+                   value="{{ 'review.action.' + review.action + '.label' | translate}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>review.object.label</label>
+
+        <div class="col-sm-9">
+            <input class="form-control" type="text" readonly disabled
+                   value="{{ 'review.object.' + review.reviewObject.type + '.label' | translate}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>review.object_name.label</label>
+
+        <div class="col-sm-9">
+            <input class="form-control" type="text" readonly disabled
+                   value="{{review.reviewObject.name}}"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-warning" ng-click="deny()" translate>review.deny_action.label</button>
+        </div>
+
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="showChanges()" ng-show="review.action == 'edit'" translate>review.changes.label</button>
+            <button class="btn btn-primary" ng-click="allow()" translate>review.allow_action.label</button>
+        </div>
+    </div>
+</form>
+<div ng-show="!review" translate>
+    review.completed
+</div>

@@ -1,0 +1,101 @@
+<section class="list-simple" ng-show="products.length">
+    <h3 translate="product.product.list.label"></h3>
+
+    <div class="box" ng-repeat="product in products">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="title">{{product.name | translateModel}}</span>
+                <span ng-show="product.reviewStatus != 'none'" class="info" translate="review.under_review"></span>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button ng-disabled="product.inUse == false"
+                        ui-sref="admin.product.detail.assignment_overview({id:product.id, type: 'product'})"
+                        type="button"
+                        class="btn btnc-info"
+                        title="{{'product.assignment_overview.label' | translate }}">
+                    <i class="fa fa-beer"></i>
+                </button>
+                <button ng-disabled="product.reviewStatus != 'none' || product.active == false"
+                        ui-sref="admin.product.detail.edit_product({id:product.id})"
+                        type="button"
+                        class="btn btnc-primary"
+                        title="{{ 'common.edit.label' | translate }}"
+                        has-type="admin"
+                        has-role="product_edit"
+                        ng-show="hasType['admin'] && hasRole['product_edit']">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button ng-disabled="product.reviewStatus != 'none' || product.inUse == false || product.active == false"
+                        reviewable-action right="product_delete" action="deactivateProduct(product.id, reviewer)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.deactivate.label' | translate }}"
+                        has-type="admin"
+                        has-role="product_delete"
+                        ng-show="hasType['admin'] && hasRole['product_delete']">
+                    <i class="fa fa-qq"></i>
+                </button>
+                <button ng-disabled="product.inUse == true"
+                        ng-click="deleteProduct(product.id)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.delete.label' | translate }}"
+                        has-type="admin"
+                        has-role="product_delete"
+                        ng-show="hasType['admin'] && hasRole['product_delete']">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="list-simple" ng-show="features.length">
+    <h3 translate="product.feature.list.label"></h3>
+
+    <div class="box" ng-repeat="feature in features">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="title">{{feature.name | translateModel}}</span>
+                <span ng-show="feature.reviewStatus != 'none'" class="info" translate="review.under_review"></span>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button ng-disabled="feature.inUse == false"
+                        ui-sref="admin.product.detail.assignment_overview({id:feature.id, type: 'feature'})"
+                        type="button"
+                        class="btn btnc-info"
+                        title="{{'product.assignment_overview.label' | translate }}">
+                    <i class="fa fa-beer"></i>
+                </button>
+                <button ui-sref="admin.product.detail.edit_feature({id:feature.id})"
+                        type="button"
+                        class="btn btnc-primary"
+                        title="{{ 'common.edit.label' | translate }}"
+                        has-type="admin"
+                        has-role="product_edit"
+                        ng-show="hasType['admin'] && hasRole['product_edit']">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button ng-disabled="feature.reviewStatus != 'none' || feature.inUse == false || feature.active == false"
+                        reviewable-action right="product_delete" action="deactivateFeature(feature.id, reviewer)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.deactivate.label' | translate }}"
+                        has-type="admin"
+                        has-role="product_delete"
+                        ng-show="hasType['admin'] && hasRole['product_delete']">
+                    <i class="fa fa-qq"></i>
+                </button>
+                <button ng-disabled="feature.inUse == true"
+                        ng-click="deleteFeature(feature.id)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.delete.label' | translate }}"
+                        has-type="admin"
+                        has-role="product_delete"
+                        ng-show="hasType['admin'] && hasRole['product_delete']">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-sm-3">
+        <span translate>plan.form.title.label</span>
+    </div>
+    <div class="col-sm-9">
+        <span ng-class="{'bg-danger diff-deleted': delta.title.type == 'updated'}">{{delta.title.data}}</span>
+        <span ng-show="delta.title.type == 'updated'" class="bg-success">{{draft.title}}</span>
+    </div>
+    <div ng-show="delta.hosting" class="col-sm-3">
+        <span translate>plan.form.hosting.label</span>
+    </div>
+    <div ng-show="delta.hosting" class="col-sm-9">
+        <span ng-show="delta.hosting.type == 'deleted' || delta.hosting.type == 'created'" ng-class="{'bg-danger diff-deleted': delta.hosting.type == 'deleted','bg-success': delta.hosting.type == 'created'}">{{delta.hosting.data.value}} {{delta.hosting.data.unit}}</span>
+        <span ng-hide="delta.hosting.type == 'deleted'" ng-class="{'bg-danger diff-deleted': delta.hosting.value.type == 'updated'}">{{delta.hosting.value.data}}</span>
+        <span ng-show="delta.hosting.value.type == 'updated'" class="bg-success">{{draft.hosting.value}}</span>
+        <span ng-hide="delta.hosting.type == 'deleted'" ng-class="{'bg-danger diff-deleted': delta.hosting.unit.type == 'updated'}">{{delta.hosting.unit.data}}</span>
+        <span ng-show="delta.hosting.unit.type == 'updated'" class="bg-success">{{draft.hosting.unit}}</span>
+
+    </div>
+    <div ng-show="delta.traffic" class="col-sm-3">
+        <span translate>plan.form.traffic.label</span>
+    </div>
+    <div ng-show="delta.traffic" class="col-sm-9">
+        <span ng-show="delta.traffic.type == 'deleted'|| delta.traffic.type == 'created'" ng-class="{'bg-danger diff-deleted': delta.traffic.type == 'deleted','bg-success': delta.traffic.type == 'created'}">{{delta.traffic.data.value}} {{delta.traffic.data.unit}}</span>
+        <span ng-hide="delta.traffic.type == 'deleted'" ng-class="{'bg-danger diff-deleted': delta.traffic.value.type == 'updated'}">{{delta.traffic.value.data}}</span>
+        <span ng-show="delta.traffic.value.type == 'updated'" class="bg-success">{{draft.traffic.value}}</span>
+        <span ng-hide="delta.traffic.type == 'deleted'" ng-class="{'bg-danger diff-deleted': delta.traffic.unit.type == 'updated'}">{{delta.traffic.unit.data}}</span>
+        <span ng-show="delta.traffic.unit.type == 'updated'" class="bg-success">{{draft.traffic.unit}}</span>
+    </div>
+
+    <div ng-show="delta.user" class="col-sm-3">
+        <span translate>plan.form.user.label</span>
+    </div>
+    <div ng-show="delta.user" class="col-sm-9">
+        <span ng-show="delta.user.type == 'deleted'|| delta.user.type == 'created'" ng-class="{'bg-danger diff-deleted': delta.user.type == 'deleted','bg-success': delta.user.type == 'created'}">{{delta.user.data.value}}</span>
+        <span ng-hide="delta.user.type == 'deleted'" ng-class="{'bg-danger diff-deleted': delta.user.value.type == 'updated'}">{{delta.user.value.data}}</span>
+        <span ng-show="delta.user.value.type == 'updated'" class="bg-success">{{draft.user.value}}</span>
+        <span ng-hide="delta.user.type == 'deleted'" ng-class="{'bg-danger diff-deleted': delta.user.unit.type == 'updated'}">{{delta.user.unit.data}}</span>
+        <span ng-show="delta.user.unit.type == 'updated'" class="bg-success">{{draft.user.unit}}</span>
+    </div>
+</div>
+

@@ -1,0 +1,22 @@
+<section ng-repeat="type in ['active', 'future', 'inactive']" ng-show="(assignments | assignmentFilter:type).length"
+        class="assignment-overview-{{type}}">
+    <h3 translate="assignment.list.{{type}}.label"></h3>
+    <div class="row">
+        <div class="col-sm-4" ng-repeat="assignment in assignments | assignmentFilter:type">
+            <div class="tile">
+                <a ui-sref="base.assignment.detail.features({customerId:customerId, assignmentId:assignment.id, type: assignment.product.productType})"
+                   class="btn btn-block btn-{{type}}">
+                    <i class="fa" ng-class="{'fa-film' : assignment.product.productType == 1}"></i>
+                    <span translate="assignment.product.type.{{assignment.product.productType}}"></span>
+                    <span>{{assignment.name}}</span>
+                </a>
+                <div class="info">
+                    <span translate="assignment.product.duration.label"></span><br>
+                    <span>{{assignment.duration.startDate | date : 'dd.MM.yyyy'}}</span>
+                    <span translate="common.range.to"></span>
+                    <span>{{assignment.duration.endDate| date : 'dd.MM.yyyy'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

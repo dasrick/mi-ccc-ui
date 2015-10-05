@@ -1,0 +1,75 @@
+<form name="form" class="form-horizontal" novalidate>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>
+            product.form.name.label
+        </label>
+
+        <div class="col-sm-9">
+            <translate-model ng-model="product.name" languages="AVAILABLE_LANGUAGES" default-language="language"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="productType" translate>
+            product.form.productType.label
+        </label>
+
+        <div class="col-sm-9">
+            <select ng-init="product.productType = '1'" required="required" id="productType" class="form-control"
+                    ng-model="product.productType"
+                    ng-options="TYPE_KEY as TYPE_VALUE|translate for (TYPE_KEY,TYPE_VALUE) in PRODUCT_TYPES">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>
+            product.form.features.label
+        </label>
+
+        <div class="col-sm-9 col-sm-offset-3" ng-hide="features.length > 0">
+            <span translate>product.feature.list.empty</span>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3" ng-show="features.length > 0" ng-repeat="feature in features">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" checklist-model="product.features" checklist-value="feature.id">
+                    {{feature.name | translateModel}}
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="!product.id" class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="admin.product.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+                form.reset.label
+            </button>
+            <button class="btn btn-primary" ng-click="create()" ng-disabled="form.$invalid" translate>
+                form.save.label
+            </button>
+        </div>
+    </div>
+
+    <div ng-show="product.id" class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="admin.product.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+                form.reset.label
+            </button>
+            <button class="btn btn-primary" right="product_edit" reviewable-action action="edit(reviewer)"
+                    ng-disabled="form.$invalid || product.reviewStatus != 'none'">
+                {{ 'form.save.label' | translate}}
+            </button>
+        </div>
+    </div>
+</form>

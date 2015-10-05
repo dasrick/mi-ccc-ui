@@ -1,0 +1,10 @@
+<li has-role="instance_create" ng-show="hasRole['instance_create']">
+    <a ui-sref="admin.instance.new" title="{{ 'instance.new.title' | translate }}">
+        <i class="fa fa-plus"></i><span translate="instance.new.label"></span>
+    </a>
+</li>
+<li has-role="instance_read" ng-show="hasRole['instance_read']">
+    <a ui-sref="admin.instance.list" title="{{ 'instance.list.title' | translate }}">
+        <i class="fa fa-list-ul"></i><span translate="instance.list.label"></span>
+    </a>
+</li>

@@ -1,0 +1,32 @@
+<section class="list-simple">
+    <div class="box" ng-repeat="customer in customerList">
+        <div class="row">
+            <div class="col-sm-8">
+                <a ui-sref="base.dashboard({customerId:customer.id})" title="{{ 'customer.list.switch' | translate }}">
+                    <span class="title">{{::customer.name}}</span>
+                    <span ng-show="customer.reviewStatus != 'none'" class="info" translate="review.under_review"></span>
+                </a>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button ui-sref="base.customermanagement.detail.edit({id:customer.id, customerId:customerId})"
+                        type="button"
+                        class="btn btnc-primary"
+                        title="{{ 'common.edit.label' | translate }}"
+                        has-role="customer_edit"
+                        ng-show="hasRole['customer_edit']">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button ng-disabled="customer.reviewStatus != 'none'"
+                        reviewable-action right="customer_delete" action="deleteCustomer(customer.id, reviewer)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.delete.label' | translate }}"
+                        has-type="admin"
+                        has-role="customer_delete"
+                        ng-show="hasType['admin'] && hasRole['customer_delete']">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,143 @@
+<form name="form" class="form-horizontal" novalidate>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>
+            player_skin.form.name.label
+        </label>
+
+        <div class="col-sm-9">
+            <translate-model ng-model="player_skin.name" form="form" languages="AVAILABLE_LANGUAGES"
+                             default-language="language"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="custom" ng-model="player_skin.custom">
+                {{'player_skin.form.custom.title' | translate}}
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': form.skinfile.$error.required}">
+        <label class="col-sm-3 control-label" translate>
+            player_skin.form.skinfile.label
+        </label>
+
+        <div class="col-sm-9">
+            <input required type="file" name="skinfile" ui-validate="'$value!=\'\''" ng-model="skinfile"
+                   accept="image/png" reset-listener="player_skin" ng-file-select="saveFile('skinfile', $files)">
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': form.bigPlayButtonFile.$error.required}">
+        <label class="col-sm-3 control-label" translate>
+            player_skin.form.big_play_button.label
+        </label>
+
+        <div class="col-sm-9">
+            <input type="file" name="bigPlayButtonFile" ng-model="bigPlayButtonFile" accept="image/png"
+                   reset-listener="player_skin" ng-file-select="saveFile('bigPlayButtonFile', $files)">
+        </div>
+    </div>
+
+    <div ng-repeat="(name, fields) in colorsOptions">
+        <div ng-repeat="field in fields" class="form-group" ng-init="nameField = name + '.' + field"  ng-class="{'has-error': form.{{name}}{{field}}.$error.required}">
+            <label class="col-sm-3 control-label" translate>
+                player_skin.form.{{nameField}}.colors.label
+            </label>
+            <div class="col-sm-1">
+                <div class="form-group">
+                    <input colorpicker-parent="true" colorpicker required name="{{name}}{{field}}" class="form-control" ng-model="player_skin.colors[name][field]" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="dataURL.skinfile && player_skin.colors.background.default" ng-repeat="name in ['playButton', 'stopButton', 'slider', 'mute', 'volume', 'volumeBackground', 'buttonSeparator', 'sliderBackground', 'sliderBuffer', 'sliderProgress', 'fullScreen', 'bigPlayButton']"
+         class="form-group"
+         ng-class="{'has-error': form.{{name}}Height.$error.required || form.{{name}}Height.$error.min || form.{{name}}Width.$error.min || form.{{name}}Width.$error.required ||form.{{name}}X.$error.required || form.{{name}}Y.$error.required}">
+        <label class="col-sm-3 control-label" translate>
+            player_skin.form.{{name}}.label
+        </label>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" translate>
+                    player_skin.form.button_height.label
+                </label>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="number" class="form-control" required name="{{name}}Height"
+                               ng-model="player_skin[name].dimension.height" min="1">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-6 control-label" translate>
+                    player_skin.form.button_width.label
+                </label>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="number" class="form-control" required name="{{name}}Width"
+                               ng-model="player_skin[name].dimension.width" min="1">
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-6 control-label" translate>
+                    player_skin.form.button_x.label
+                </label>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="number" class="form-control" required name="{{name}}X" ng-model="player_skin[name].position.x"
+                               min="0">
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-6 control-label" translate>
+                    player_skin.form.button_y.label
+                </label>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="number" class="form-control" required name="{{name}}Y" ng-model="player_skin[name].position.y"
+                               min="0">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h4 translate>player_skin.form.preview.label</h4>
+
+            <div style="background: {{player_skin.colors.background.default}} url({{dataURL.skinfile}}) no-repeat -{{player_skin[name].position.x}}px -{{player_skin[name].position.y}}px; height: {{player_skin[name].dimension.height}}px; width: {{player_skin[name].dimension.width}}px">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="admin.player_skin.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+                form.reset.label
+            </button>
+            <button class="btn btn-primary" ng-click="create()"
+                    ng-disabled="form.$invalid">
+                {{ 'form.save.label' | translate}}
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,123 @@
+<div class="row">
+    <div class="col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <form name="form" novalidate>
+
+            <h3 translate="instance.form.section.general.title"></h3>
+
+            <div class="form-group" ng-class="{'has-error': form.name.$error.required}">
+                <label class="control-label" for="name" translate="instance.form.name.label"
+                       popover="{{'instance.form.name.tooltip'|translate}}"
+                       popover-trigger="mouseenter"
+                       popover-placement="right"></label>
+                <input id="name"
+                       name="name"
+                       type="text"
+                       class="form-control"
+                       ng-model="vmproInstance.name"
+                       required/>
+            </div>
+
+            <h3 translate="instance.form.section.vmpro.title"></h3>
+
+            <div class="form-group" ng-class="{'has-error': form.baseUrl.$error.required}">
+                <label class="control-label" for="baseUrl" translate="instance.form.base_url.label"
+                       popover="{{'instance.form.base_url.tooltip'|translate}}"
+                       popover-trigger="mouseenter"
+                       popover-placement="right"></label>
+                <input id="baseUrl"
+                       name="baseUrl"
+                       type="text"
+                       class="form-control"
+                       ng-model="vmproInstance.baseUrl"
+                       required/>
+            </div>
+
+            <h3 translate="instance.form.section.auth.title"></h3>
+
+            <div class="form-group" ng-class="{'has-error': form.authUrl.$error.required}">
+                <label class="control-label" for="authUrl" translate="instance.form.auth_url.label"
+                       popover="{{'instance.form.auth_url.tooltip'|translate}}"
+                       popover-trigger="mouseenter"
+                       popover-placement="right"></label>
+                <input id="authUrl"
+                       name="authUrl"
+                       type="text"
+                       class="form-control"
+                       ng-model="vmproInstance.authUrl"
+                       required/>
+            </div>
+            <div class="form-group" ng-class="{'has-error': form.authClientId.$error.required}">
+                <label class="control-label" for="authClientId" translate="instance.form.auth_client_id.label"
+                       popover="{{'instance.form.auth_client_id.tooltip'|translate}}"
+                       popover-trigger="mouseenter"
+                       popover-placement="right"></label>
+                <input id="authClientId"
+                       name="authClientId"
+                       type="text"
+                       class="form-control"
+                       ng-model="vmproInstance.authClientId"
+                       required/>
+            </div>
+            <div class="form-group" ng-class="{'has-error': form.authClientSecret.$error.required}">
+                <label class="control-label" for="authClientSecret" translate="instance.form.auth_client_secret.label"
+                       popover="{{'instance.form.auth_client_secret.tooltip'|translate}}"
+                       popover-trigger="mouseenter"
+                       popover-placement="right"></label>
+                <input id="authClientSecret"
+                       name="authClientSecret"
+                       type="text"
+                       class="form-control"
+                       ng-model="vmproInstance.authClientSecret"
+                       required/>
+            </div>
+            <div class="form-group" ng-class="{'has-error': form.authUsername.$error.required}">
+                <label class="control-label" for="authUsername" translate="instance.form.auth_username.label"
+                       popover="{{'instance.form.auth_username.tooltip'|translate}}"
+                       popover-trigger="mouseenter"
+                       popover-placement="right"></label>
+                <input id="authUsername"
+                       name="authUsername"
+                       type="text"
+                       class="form-control"
+                       ng-model="vmproInstance.authUsername"
+                       required/>
+            </div>
+            <div class="form-group" ng-class="{'has-error': form.authPassword.$error.required}">
+                <label class="control-label" for="authPassword" translate="instance.form.auth_password.label"
+                       popover="{{'instance.form.auth_password.tooltip'|translate}}"
+                       popover-trigger="mouseenter"
+                       popover-placement="right"></label>
+                <input id="authPassword"
+                       name="authPassword"
+                       type="text"
+                       class="form-control"
+                       ng-model="vmproInstance.authPassword"
+                       required/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 text-left">
+                    <button class="btn btn-default" ui-sref="admin.instance.list" translate="common.cancel.label">
+                    </button>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <button ng-show="!vmproInstance.id"
+                            class="btn btn-primary"
+                            ng-click="save()"
+                            ng-disabled="form.$pristine"
+                            translate="form.save.label">
+                    </button>
+                    <button ng-show="vmproInstance.id"
+                            class="btn btn-primary"
+                            right="instance_edit"
+                            reviewable-action
+                            action="save(reviewer)"
+                            ng-disabled="form.$invalid || vmproInstance.reviewStatus != 'none' || form.$pristine">
+                        {{ 'form.save.label' | translate}}
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

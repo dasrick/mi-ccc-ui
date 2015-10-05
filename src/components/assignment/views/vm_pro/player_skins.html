@@ -1,0 +1,61 @@
+<div has-role="assignment_create"
+     ng-show="hasRole['assignment_create'] && durationType!='inactive'"
+     ng-cloak
+     ng-init="additionalAssignmentsForm.isShown = false">
+
+    <section class="assignment-subdetail-add" ng-hide="additionalAssignmentsForm.isShown">
+        <a ng-click="additionalAssignmentsForm.isShown = true">
+            <div class="box">
+                <div class="title">
+                    <i class="fa fa-plus"></i><span translate="assignment.add_player_skin.label"></span>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <section class="assignment-subdetail-form" ng-show="additionalAssignmentsForm.isShown">
+        <div class="box">
+            <div class="row">
+                <div class="col-sm-4">
+                    <form name="form" novalidate ng-show="additionalAssignmentsForm.isShown">
+                        <div class="form-group" ng-class="{'has-error': form.plan.$error.required}">
+                            <label class="control-label" translate="assignment.product.player_skins.label"></label>
+                            <ui-select ng-model="skin.selected" theme="bootstrap" ng-disabled="disabled">
+                                <ui-select-match placeholder="{{'assignment.player_skins.select.label'| translate}}">
+                                    {{$select.selected.name[lang]}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="skin in playerSkins | nameFilter: $select.search">
+                                    <div ng-bind-html="skin.name[lang] | highlight: $select.search"
+                                         class="option-value"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <button class="btn btn-primary"
+                                ng-click="addCustomPlayerSkin(skin.selected)"
+                                ng-disabled="form.$invalid || !skin.selected"
+                                translate="common.add.label">
+                        </button>
+                        <button class="btn btn-default"
+                                ng-click="reset(); additionalAssignmentsForm.isShown = false"
+                                translate="common.cancel.label">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section ng-repeat="customType in [false, true]"
+         ng-show="(detail.playerSkins | filter:{custom:customType}).length"
+         class="assignment-subdetail-additional-custom-{{customType}}">
+    <h3 translate="assignment.player_skins.custom_{{customType}}.label"></h3>
+
+    <div class="box" ng-repeat="skin in detail.playerSkins | filter: {custom:customType}">
+        <div class="row">
+            <div class="col-sm-10">
+                <span class="title">{{skin.name | translateModel}}</span>
+            </div>
+        </div>
+    </div>
+</section>

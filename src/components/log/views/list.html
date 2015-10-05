@@ -1,0 +1,89 @@
+<section class="section-body">
+<h2><span translate="log.title"></span></h2>
+<table class="table table-hover table-responsive">
+    <thead>
+    <tr>
+        <th><span translate>log.date.label</span><i order-filter="['desc', 'asc', '']" class="fa pull-right fa-sort-desc" ng-model="orderData.loggedAt"></i></th>
+        <th><span translate>log.user.label</span><i order-filter class="fa pull-right fa-sort" ng-model="orderData.username"></i></th>
+        <th><span translate>review.action.label</span><i order-filter class="fa pull-right fa-sort" ng-model="orderData.action"></i></th>
+        <th><span translate>review.object.label</span><i order-filter class="fa pull-right fa-sort" ng-model="orderData.type"></i></th>
+        <th><button type="button"
+                    ng-click="orderData = {'loggedAt': 'desc', 'username' : '', 'action': '', 'type': ''}"
+                    class="btn btnc-info">
+            <i class="fa fa-times-circle"></i>
+                    </button>
+        </th>
+    </tr>
+    <tr>
+        <th class="col-sm-3">
+            <div class="col-sm-6">
+                <div class="input-group ">
+                    <input type="text" class="form-control"
+                           datepicker-popup="dd.MM.yyyy"
+                           ng-model="filter.startDate"
+                           is-open="openedStartDate"
+                           min-date="actualMinDate"
+                           show-button-bar="false"
+                            />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="openStartDate($event)">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                           datepicker-popup="dd.MM.yyyy"
+                           ng-model="filter.endDate"
+                           is-open="openedEndDate"
+                           min-date="actualMinDate"
+                           show-button-bar="false"
+                            />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="openEndDate($event)">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                </div>
+            </div>
+
+        </th>
+        <th>
+            <select ng-model="filter.username" class="form-control"
+                    ng-options="log.username as log.username for log in logs | unique:'username'">
+                <option value="" translate>common.empty_select.label</option>
+            </select>
+        </th>
+        <th>
+            <select ng-model="filter.action" class="form-control"
+                    ng-options="log.action as log.action for log in logs | unique:'action'">
+                <option value="" translate>common.empty_select.label</option>
+            </select>
+        </th>
+        <th>
+            <select ng-model="filter.type" class="form-control"
+                    ng-options="log.type as log.type for log in logs | unique:'type'">
+                <option value="" translate>common.empty_select.label</option>
+            </select>
+
+       </th>
+        <th><button type="button"
+                    ng-click="filter = {}"
+                    class="btn btnc-info">
+            <i class="fa fa-times-circle"></i>
+        </button></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="log in logs">
+        <td>{{log.loggedAt | date:'dd.MM.yyyy HH:mm'}}</td>
+        <td>{{log.username}}</td>
+        <td>{{log.action}}</td>
+        <td colspan="2">{{log.type}}</td>
+    </tr>
+    </tbody>
+</table>
+</section>

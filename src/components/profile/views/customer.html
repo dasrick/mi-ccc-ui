@@ -1,0 +1,180 @@
+<section class="section-body">
+    <h2 translate="nav.profile.customer.label"></h2>
+
+    <form name="form" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="name" translate>
+                customer.form.name.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="name" class="form-control" name="name" type="text" ng-model="customer.name"
+                       has-role="customer_edit" ng-readonly="!hasRole['customer_edit']" required/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="street" translate>
+                customer.form.street.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="street" class="form-control" name="street" type="text"
+                       ng-readonly="!hasRole['customer_edit']"
+                       has-role="customer_edit" ng-model="customer.address.street"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="zip" translate>
+                customer.form.zip.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="zip" class="form-control" name="zip" type="text" ng-readonly="!hasRole['customer_edit']"
+                       has-role="customer_edit" ng-model="customer.address.zip"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="city" translate>
+                customer.form.city.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="city" class="form-control" name="city" type="text" ng-readonly="!hasRole['customer_edit']"
+                       has-role="customer_edit" ng-model="customer.address.city"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="phone" translate>
+                customer.form.phone.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="phone" class="form-control" name="phone" type="tel" ng-readonly="!hasRole['customer_edit']"
+                       has-role="customer_edit" ng-model="customer.phone"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="fax" translate>
+                customer.form.fax.label
+            </label>
+
+            <div class="col-sm-9">
+                <input id="fax" class="form-control" name="fax" type="tel" ng-readonly="!hasRole['customer_edit']"
+                       has-role="customer_edit" ng-model="customer.fax"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="country" translate>customer.form.country.label</label>
+
+            <div class="col-sm-9">
+                <input id="country" class="form-control" type="text" name="country" has-role="customer_edit"
+                       typeahead-on-select="countrySelect($item)" ng-readonly="!hasRole['customer_edit']"
+                       ng-model="selectedCountry" typeahead-editable="false" typeahead-min-length="-1"
+                       typeahead="c.name for c in countries | filter:$viewValue">
+            </div>
+        </div>
+
+        <fieldset>
+            <legend translate>customer.form.contact.label</legend>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="title" translate>
+                    customer.form.contact.title.label
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="title" class="form-control" name="title" type="text"
+                           ng-readonly="!hasRole['customer_edit']"
+                           has-role="customer_edit" ng-model="customer.contact.title"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="salutation" translate>
+                    customer.form.contact.salutation.label
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="salutation" class="form-control" name="salutation"
+                           ng-readonly="!hasRole['customer_edit']"
+                           type="text" has-role="customer_edit" ng-model="customer.contact.salutation"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="firstName" translate>
+                    customer.form.contact.firstName.label
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="firstName" class="form-control" name="firstName" ng-readonly="!hasRole['customer_edit']"
+                           type="text" has-role="customer_edit" ng-model="customer.contact.firstName"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="lastName" translate>
+                    customer.form.contact.lastName.label
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="lastName" class="form-control" name="lastName" ng-readonly="!hasRole['customer_edit']"
+                           type="text" has-role="customer_edit" ng-model="customer.contact.lastName"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="email" translate>
+                    customer.form.contact.email.label
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="email" class="form-control" name="email" type="text"
+                           ng-readonly="!hasRole['customer_edit']"
+                           has-role="customer_edit" ng-model="customer.contact.email"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="cPhone" translate>
+                    customer.form.phone.label
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="cPhone" class="form-control" name="phone" type="tel"
+                           ng-readonly="!hasRole['customer_edit']"
+                           has-role="customer_edit" ng-model="customer.contact.phone"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="cFax" translate>
+                    customer.form.fax.label
+                </label>
+
+                <div class="col-sm-9">
+                    <input id="cFax" class="form-control" name="fax" type="tel" ng-readonly="!hasRole['customer_edit']"
+                           has-role="customer_edit" ng-model="customer.contact.fax"/>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="row" has-role="customer_edit" ng-show="hasRole['customer_edit']">
+            <div class="col-sm-6 col-sm-offset-6 text-right">
+                <button class="btn" ng-click="reset()" ng-disabled="isUnchanged()" translate>
+                    form.reset.label
+                </button>
+                <button class="btn btn-primary" ng-click="save()"
+                        ng-disabled="form.$invalid || form.$pristine || isUnchanged()" translate>
+                    form.save.label
+                </button>
+            </div>
+        </div>
+
+    </form>
+</section>

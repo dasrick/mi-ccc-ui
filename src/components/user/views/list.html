@@ -1,0 +1,64 @@
+<section class="list-simple">
+    <div class="box" ng-repeat="user in userList" ng-class="{'inactive' : !user.enabled || user.locked }">
+        <div class="row">
+            <div class="col-sm-7">
+                <a ui-sref="base.dashboard({customerId:customer.id})" title="{{ customer.name }}">
+                    <span class="title">{{user.lastName}}, {{user.firstName}}</span>
+                    <span ng-show="user.reviewStatus != 'none'" class="info" translate="review.under_review"></span>
+                </a>
+            </div>
+            <div class="col-sm-5 text-right">
+                <div class="btn-group">
+                    <button ui-sref="base.usermanagement.detail.edit_data({userId:user.id})"
+                            type="button"
+                            class="btn btnc-primary"
+                            title="{{ 'common.edit.label' | translate }}"
+                            has-role="user_edit"
+                            ng-show="hasRole['user_edit']"
+                            ng-disabled="isCurrentUser(user.id)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button ui-sref="base.usermanagement.detail.edit_roles({userId:user.id, customerId:customerId})"
+                            type="button"
+                            class="btn btnc-primary"
+                            title="{{ 'user.edit_roles.label' | translate }}"
+                            has-role="user_set_role"
+                            ng-show="hasRole['user_set_role']"
+                            ng-disabled="isCurrentUser(user.id)">
+                        <i class="fa fa-legal"></i>
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <button ng-click="switchLock(user)"
+                            type="button"
+                            class="btn btnc-primary"
+                            title="{{ 'user.lock.label' | translate }}"
+                            has-role="user_admin"
+                            ng-show="hasRole['user_admin']"
+                            ng-disabled="isCurrentUser(user.id)">
+                        <i class="fa" ng-class="{'fa-lock' : user.locked, 'fa-unlock': !user.locked}"></i>
+                    </button>
+                    <button ng-click="requestPassword(user.email)"
+                            type="button"
+                            class="btn btnc-primary"
+                            title="{{ 'common.password_reset.label' | translate }}"
+                            has-role="user_admin"
+                            ng-show="hasRole['user_admin'] && !currentUserHasType('consumer')"
+                            ng-disabled="isCurrentUser(user.id) || user.locked">
+                        <i class="fa fa-undo"></i>
+                    </button>
+                    <button reviewable-action right="user_delete" action="deleteUser(user.id, reviewer)"
+                            exclude="user.id"
+                            type="button"
+                            class="btn btnc-danger"
+                            title="{{ 'common.delete.label' | translate }}"
+                            has-role="user_delete"
+                            ng-show="hasRole['user_delete']"
+                            ng-disabled="isCurrentUser(user.id) || user.reviewStatus != 'none'">
+                        <i class="fa fa-times-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

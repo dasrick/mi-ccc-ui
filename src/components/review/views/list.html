@@ -1,0 +1,32 @@
+<div ng-repeat="(type,list) in reviews">
+    <div class="panel panel-success" ng-show="list.length">
+        <div class="panel-heading" translate>review.list.{{type}}.title</div>
+        <table class="table table-hover table-responsive">
+
+            <thead>
+                <tr>
+                    <th translate>review.object.label</th>
+                    <th translate>review.action.label</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="review in list">
+                    <td>
+                        <a ng-if="type == 'reviewer'" ui-sref="profile.reviews.detail({token: review.token})">
+                            {{ 'review.object.' + review.reviewObject.type + '.label' | translate}}
+                        </a>
+                        <span ng-if="type == 'opener'">
+                            {{ 'review.object.' + review.reviewObject.type + '.label' | translate}}
+                        </span>
+                    </td>
+                    <td>{{ 'review.action.' + review.action + '.label' | translate}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="alert alert-info" ng-show="!reviews.opener.length && !reviews.reviewer.length">
+    <p translate>review.list.empty</p>
+</div>

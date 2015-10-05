@@ -1,0 +1,92 @@
+<form name="form" class="form-horizontal" novalidate>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>
+            product.form.name.label
+        </label>
+
+        <div class="col-sm-9">
+            <translate-model ng-model="feature.name" languages="AVAILABLE_LANGUAGES" default-language="language"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>
+            product.form.configuration.label
+        </label>
+        <div ng-repeat="(key,configuration) in feature.configurations" class="col-sm-9" ng-class="{'col-sm-offset-3' : $index > 0}" >
+            <div class="col-sm-6" ng-class="{'has-error': form.configuration_name_{{key}}.$error.required}">
+                <input type="text" placeholder="{{'product.form.configuration.name.label' | translate}}" name="configuration_name_{{key}}" required="required" class="form-control" ng-model="configuration.name"/>
+            </div>
+            <div class="col-sm-6" ng-class="{'has-error': form.configuration_value_{{key}}.$error.required}">
+                <input type="text" placeholder="{{'product.form.configuration.value.label' | translate}}"  name="configuration_value_{{key}}" required="required" class="form-control" ng-model="configuration.value"/>
+            </div>
+        </div>
+        <button class="btn btn-default pull-right"  ng-click="add()" translate>product.form.configuration.new.label</button>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>
+            product.form.custom_configuration.label
+        </label>
+        <div ng-repeat="(key,configuration) in feature.customConfigurations" class="col-sm-9" ng-class="{'col-sm-offset-3' : $index > 0}" >
+            <label class="col-sm-1 control-label" translate>
+                product.form.name.label
+            </label>
+
+            <div class="col-sm-11">
+                <translate-model ng-model="configuration.name" languages="AVAILABLE_LANGUAGES" default-language="language"/>
+            </div>
+            <div class="col-sm-12" ng-class="{'has-error': form.custom_configuration_key_{{key}}.$error.required}">
+                <input type="text" placeholder="{{'product.form.custom_configuration.key.label' | translate}}"  name="custom_configuration_key_{{key}}" required="required" class="form-control" ng-model="configuration.key"/>
+            </div>
+        </div>
+        <button class="btn btn-default pull-right"  ng-click="addCustomConfiguration()" translate>product.form.custom_configuration.new.label</button>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" translate>
+            product.form.supportedTypes.label
+        </label>
+        <div class="col-sm-9 col-sm-offset-3"
+             ng-repeat="(TYPE_KEY,TYPE_VALUE) in PRODUCT_TYPES">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" checklist-model="feature.supportedTypes" checklist-value="parseInt(TYPE_KEY)">
+                    {{TYPE_VALUE|translate}}
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="!feature.id" class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="admin.product.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+                form.reset.label
+            </button>
+            <button class="btn btn-primary" ng-click="create()" ng-disabled="form.$invalid" translate>
+                form.save.label
+            </button>
+        </div>
+    </div>
+
+    <div ng-show="feature.id" class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="admin.product.list" translate>
+                common.cancel.label
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+                form.reset.label
+            </button>
+            <button class="btn btn-primary" ng-click="edit()" ng-disabled="form.$invalid">
+                {{ 'form.save.label' | translate}}
+            </button>
+        </div>
+    </div>
+</form>

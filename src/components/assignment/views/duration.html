@@ -1,0 +1,47 @@
+<section>
+    <div class="duration-group" ng-class="{'has-error': form.startDate.$error.required}">
+        <label class="control-label" for="startDate" translate="assignment.form.startDate.label"></label>
+
+        <div class="duration-input input-group">
+            <input id="startDate"
+                   name="startDate"
+                   type="text"
+                   class="form-control"
+                   datepicker-popup="dd.MM.yyyy"
+                   ng-model="assignment.duration.startDate"
+                   is-open="openedStartDate"
+                   min-date="actualMinStartDate"
+                   ng-required="true"
+                   show-button-bar="false"
+                   ui-validate=" '$value.getTime() < assignment.duration.endDate.getTime()' "
+                   ui-validate-watch="'assignment.duration.endDate'">
+                    <span class="input-group-btn">
+                        <span class="btn btn-default"
+                              ng-click="openStartDate($event)"><i class="fa fa-calendar"></i></span>
+                    </span>
+        </div>
+    </div>
+    <div class="duration-group" ng-class="{'has-error': form.endDate.$error.validator}">
+        <label class="control-label" for="endDate" translate="assignment.form.endDate.label"></label>
+
+        <div class="duration-input input-group">
+            <input id="endDate"
+                   name="endDate"
+                   type="text"
+                   class="form-control"
+                   datepicker-popup="dd.MM.yyyy"
+                   ng-model="assignment.duration.endDate"
+                   is-open="openedEndDate"
+                   min-date="actualMinEndDate"
+                   ng-required="true"
+                   show-button-bar="false"
+                   ui-validate=" '$value.getTime() > assignment.duration.startDate.getTime()' "
+                   ui-validate-watch="'assignment.duration.startDate'">
+                <span class="input-group-btn">
+                    <span class="btn btn-default"
+                          ng-disabled="!assignment.duration.startDate"
+                          ng-click="openEndDate($event)"><i class="fa fa-calendar"></i></span>
+                </span>
+        </div>
+    </div>
+</section>

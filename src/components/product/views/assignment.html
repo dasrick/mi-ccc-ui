@@ -1,0 +1,17 @@
+<section class="list-simple" ng-show="assignments.length">
+    <div class="box" ng-repeat="assignment in assignments">
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="title">
+                    <a ui-sref="base.assignment.detail.features({customerId:assignment.customer.id, assignmentId: assignment.id, type: assignment.product.productType})">{{assignment.customer.name}}</a>
+                </span>
+            </div>
+            <div class="col-sm-4">
+                <span class="title">{{product.name | translateModel}}</span>
+            </div>
+            <div class="col-sm-4">
+                <span class="title" ng-show="assignment.product.productType == 1">TODO show URL</span>
+            </div>
+        </div>
+    </div>
+</section>

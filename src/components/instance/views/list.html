@@ -1,0 +1,46 @@
+<section class="list-simple" ng-show="vmproInstances.length">
+    <div class="box"
+         ng-repeat="instance in vmproInstances"
+         ng-class="{'inactive' : instance.active == false}">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="title">{{::instance.name}}</span>
+                <span ng-show="instance.reviewStatus != 'none'" class="info" translate="review.under_review"></span>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button ng-disabled="instance.reviewStatus != 'none'"
+                        ui-sref="admin.instance.detail.edit({id:instance.id})"
+                        type="button"
+                        class="btn btnc-primary"
+                        title="{{ 'common.edit.label' | translate }}"
+                        has-type="admin"
+                        has-role="instance_edit"
+                        ng-show="hasType['admin'] && hasRole['instance_edit']">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button ng-disabled="instance.reviewStatus != 'none' || instance.active == false ||  instance.inUse == false"
+                        reviewable-action right="instance_delete"
+                        action="deactivate(instance.id, reviewer)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.deactivate.label' | translate }}"
+                        has-type="admin"
+                        has-role="instance_delete"
+                        ng-show="hasType['admin'] && hasRole['instance_delete']">
+                    <i class="fa fa-qq"></i>
+                </button>
+                <button
+                        ng-disabled="instance.reviewStatus != 'none' || instance.inUse == true"
+                        ng-click="delete(instance.id)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.delete.label' | translate }}"
+                        has-type="admin"
+                        has-role="instance_delete"
+                        ng-show="hasType['admin'] && hasRole['instance_delete']">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

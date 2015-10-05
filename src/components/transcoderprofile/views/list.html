@@ -1,0 +1,50 @@
+<section class="list-simple"
+         ng-repeat="isCustom in [false, true]"
+         ng-show="(transcoderProfiles | filter: {custom: isCustom}).length">
+    <h3 translate="transcoderprofile.list.custom.{{isCustom}}.label"></h3>
+
+    <div class="box"
+         ng-repeat="transcoderProfile in transcoderProfiles | filter: {custom: isCustom}"
+         ng-class="{'inactive' : transcoderProfile.active == false}">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="title">{{::transcoderProfile.key}}</span>
+                <span ng-show="transcoderProfile.reviewStatus != 'none'" class="info"
+                      translate="review.under_review"></span>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button ui-sref="admin.transcoderprofile.detail.edit({id:transcoderProfile.key})"
+                        type="button"
+                        class="btn btnc-primary"
+                        title="{{ 'common.edit.label' | translate }}"
+                        has-type="admin"
+                        has-role="transcoderprofile_edit"
+                        ng-show="hasType['admin'] && hasRole['transcoderprofile_edit']">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button ng-disabled="transcoderProfile.reviewStatus != 'none' || transcoderProfile.active == false || (transcoderProfile.custom == true && transcoderProfile.inUse == false)"
+                        reviewable-action right="transcoderprofile_delete"
+                        action="deactivate(transcoderProfile.key, reviewer)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.deactivate.label' | translate }}"
+                        has-type="admin"
+                        has-role="transcoderprofile_delete"
+                        ng-show="hasType['admin'] && hasRole['transcoderprofile_delete']">
+                    <i class="fa fa-qq"></i>
+                </button>
+                <button ng-if="isCustom"
+                        ng-disabled="transcoderProfile.inUse == true"
+                        ng-click="delete(transcoderProfile.id)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.delete.label' | translate }}"
+                        has-type="admin"
+                        has-role="transcoderprofile_delete"
+                        ng-show="hasType['admin'] && hasRole['transcoderprofile_delete']">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

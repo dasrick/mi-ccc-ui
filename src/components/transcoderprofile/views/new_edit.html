@@ -1,0 +1,344 @@
+<form name="form" class="form-horizontal" novalidate>
+
+<h3 translate="transcoderprofile.form.section.general.title"></h3>
+
+<div ng-if="!transcoderprofile.key" class="form-group" ng-class="{'has-error': form.keyPrefix.$error.required}">
+    <label class="col-sm-3 control-label" for="keyPrefix" translate="transcoderprofile.form.key.label"></label>
+
+    <div class="col-sm-9">
+        <input class="form-control"
+               type="text"
+               id="keyPrefix"
+               name="keyPrefix"
+               ng-model="transcoderprofile.keyPrefix" required/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-3 control-label" for="custom" translate="transcoderprofile.form.custom.label"></label>
+
+    <div class="col-sm-9">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="custom" name="custom" ng-model="transcoderprofile.custom">
+                <span translate="transcoderprofile.form.custom.title"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.quality.$error.required}">
+    <label class="col-sm-3 control-label"
+           for="quality"
+           translate="transcoderprofile.form.quality.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="quality"
+                name="quality"
+                ng-model="transcoderprofile.quality"
+                required>
+            <option value="" translate="transcoderprofile.form.select.empty"></option>
+            <option value="108p">108p</option>
+            <option value="288p">288p</option>
+            <option value="360p">360p</option>
+            <option value="480p">480p</option>
+            <option value="576p">576p</option>
+            <option value="720p">720p</option>
+            <option value="768p">768p</option>
+            <option value="1080p">1080p</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.containerCodec.$error.required}">
+    <label class="col-sm-3 control-label" translate="transcoderprofile.form.container.codec.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="containerCodec"
+                name="containerCodec"
+                ng-model="transcoderprofile.container.name"
+                required>
+            <option value="" translate="transcoderprofile.form.select.empty"></option>
+            <option value="asf">asf</option>
+            <option value="mp4">mp4</option>
+            <option value="webm">webm</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.videoExtension.$error.required}">
+    <label class="col-sm-3 control-label"
+           for="videoExtension"
+           translate="transcoderprofile.form.file.extension.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="videoExtension"
+                name="videoExtension"
+                ng-model="transcoderprofile.videoExtension"
+                required>
+            <option value="" translate="transcoderprofile.form.select.empty"></option>
+            <option value="mp4">mp4</option>
+            <option value="webm">webm</option>
+            <option value="wmv">wmv</option>
+        </select>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <label class="col-sm-3 control-label"
+           for="createStill"
+           translate="transcoderprofile.form.still.create.label"></label>
+
+    <div class="col-sm-9">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="createStill" name="createStill" ng-model="transcoderprofile.createStill">
+                <span translate="transcoderprofile.form.still.create.title"></span>
+            </label>
+        </div>
+    </div>
+</div>
+<div ng-if="transcoderprofile.createStill"
+     class="form-group" ng-class="{'has-error': form.stillExtension.$error.required}">
+    <label class="col-sm-3 control-label"
+           for="stillExtension"
+           translate="transcoderprofile.form.still.extension.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="stillExtension"
+                name="stillExtension"
+                ng-model="transcoderprofile.stillExtension"
+                required>
+            <option value="jpg">jpg</option>
+        </select>
+    </div>
+</div>
+
+<hr>
+
+<h3 translate="transcoderprofile.form.section.video.title"></h3>
+
+<div class="form-group" ng-class="{'has-error': form.videoCodec.$error.required}">
+    <label class="col-sm-3 control-label" translate="transcoderprofile.form.video.codec.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="videoCodec"
+                name="videoCodec"
+                ng-model="transcoderprofile.video.codec.name"
+                required>
+            <option value="" translate="transcoderprofile.form.select.empty"></option>
+            <option value="h264">h264</option>
+            <option value="vp8">vp8</option>
+            <option value="wmv2">wmv2</option>
+        </select>
+    </div>
+</div>
+
+
+<div ng-show="transcoderprofile.video.codec.name == 'h264'" class="form-group"
+     ng-class="{'has-error': form.videoCodecPreset.$error.required}">
+    <label class="col-sm-3 control-label" translate="transcoderprofile.form.video.codec.preset.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="videoCodecPreset"
+                name="videoCodecPreset"
+                ng-model="transcoderprofile.video.codec.properties.preset"
+                required>
+            <option value="" translate="transcoderprofile.form.select.empty"></option>
+            <option value="ultrafast">ultrafast</option>
+            <option value="superfast">superfast</option>
+            <option value="veryfast">veryfast</option>
+            <option value="faster">faster</option>
+            <option value="fast">fast</option>
+            <option value="medium">medium</option>
+            <option value="slow">slow</option>
+            <option value="slower">slower</option>
+            <option value="veryslow">veryslow</option>
+            <option value="placebo">placebo</option>
+        </select>
+    </div>
+</div>
+
+<div ng-show="transcoderprofile.video.codec.name == 'h264'" class="form-group"
+     ng-class="{'has-error': form.videoCodecProfile.$error.required}">
+    <label class="col-sm-3 control-label" translate="transcoderprofile.form.video.codec.profile.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="videoCodecProfile"
+                name="videoCodecProfile"
+                ng-model="transcoderprofile.video.codec.properties.profile"
+                required>
+            <option value="" translate="transcoderprofile.form.select.empty"></option>
+            <option value="baseline">baseline</option>
+            <option value="main">main</option>
+            <option value="high">high</option>
+            <option value="high10">high10</option>
+            <option value="high422">high422</option>
+            <option value="high444">high444</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.videoWidth.$error.required}">
+    <label class="col-sm-3 control-label" for="videoWidth"
+           translate="transcoderprofile.form.video.width.label"></label>
+
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input class="form-control" id="videoWidth" name="videoWidth" type="number" min="1"
+                   ng-model="transcoderprofile.video.resolution.width" required/>
+            <span class="input-group-addon">px</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.videoHeight.$error.required}">
+    <label class="col-sm-3 control-label" for="videoHeight"
+           translate="transcoderprofile.form.video.height.label"></label>
+
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input class="form-control" id="videoHeight" name="videoHeight" type="number" min="1"
+                   ng-model="transcoderprofile.video.resolution.height" required/>
+            <span class="input-group-addon">px</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.videoKeyFrame.$error.required}">
+    <label class="col-sm-3 control-label" for="videoKeyFrame"
+           translate="transcoderprofile.form.video.keyframe.label"></label>
+
+    <div class="col-sm-9">
+        <input class="form-control" id="videoKeyFrame" name="videoKeyFrame" type="number" min="1"
+               ng-model="transcoderprofile.video.keyFrame" required/>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.videoFrameRate.$error.required}">
+    <label class="col-sm-3 control-label" for="videoFrameRate"
+           translate="transcoderprofile.form.video.framerate.label"></label>
+
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input class="form-control" id="videoFrameRate" name="videoFrameRate" type="number" min="1"
+                   ng-model="transcoderprofile.video.frameRate" required/>
+            <span class="input-group-addon">fps</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.videoBitrate.$error.required}">
+    <label class="col-sm-3 control-label" for="videoBitrate"
+           translate="transcoderprofile.form.video.bitrate.label"></label>
+
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input class="form-control" id="videoBitrate" name="videoBitrate" type="number" min="1"
+                   ng-model="transcoderprofile.video.bitRate" required/>
+            <span class="input-group-addon">kbit/s</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.aspectRatioWidth.$error.required}">
+    <label class="col-sm-3 control-label" for="aspectRatioWidth"
+           translate="transcoderprofile.form.video.aspectratio.width.label"></label>
+
+    <div class="col-sm-9">
+        <input class="form-control" id="aspectRatioWidth" name="aspectRatioWidth" type="number" min="1"
+               ng-model="transcoderprofile.video.aspectRatio.width" required/>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.aspectRatioHeight.$error.required}">
+    <label class="col-sm-3 control-label" for="aspectRatioHeight"
+           translate="transcoderprofile.form.video.aspectratio.height.label"></label>
+
+    <div class="col-sm-9">
+            <input class="form-control" id="aspectRatioHeight" name="aspectRatioHeight" type="number" min="1"
+                   ng-model="transcoderprofile.video.aspectRatio.height" required/>
+    </div>
+</div>
+
+<hr>
+
+<h3 translate="transcoderprofile.form.section.audio.title"></h3>
+
+<div class="form-group" ng-class="{'has-error': form.audioCodec.$error.required}">
+    <label class="col-sm-3 control-label" translate="transcoderprofile.form.audio.codec.label"></label>
+
+    <div class="col-sm-9">
+        <select class="form-control"
+                id="audioCodec"
+                name="audioCodec"
+                ng-model="transcoderprofile.audio.codec.name"
+                required>
+            <option value="" translate="transcoderprofile.form.select.empty"></option>
+            <option value="aac">aac</option>
+            <option value="vorbis">vorbis</option>
+            <option value="wma2">wma2</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.audioBitRate.$error.required}">
+    <label class="col-sm-3 control-label" for="audioBitRate"
+           translate="transcoderprofile.form.audio.bitrate.label"></label>
+
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input class="form-control" id="audioBitRate" name="audioBitRate" type="number" min="1"
+                   ng-model="transcoderprofile.audio.bitRate" required/>
+            <span class="input-group-addon">kbit/s</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': form.audioSampleRate.$error.required}">
+    <label class="col-sm-3 control-label" for="audioSampleRate"
+           translate="transcoderprofile.form.audio.samplerate.label"></label>
+
+    <div class="col-sm-9">
+
+        <div class="input-group">
+            <input class="form-control" id="audioSampleRate" name="audioSampleRate" type="number" min="1"
+                   ng-model="transcoderprofile.audio.sampleRate" required/>
+            <span class="input-group-addon">Hz</span>
+        </div>
+    </div>
+</div>
+<div class="form-group" ng-class="{'has-error': form.audioChannels.$error.required}">
+    <label class="col-sm-3 control-label" for="audioChannels"
+           translate="transcoderprofile.form.audio.channels.label"></label>
+
+    <div class="col-sm-9">
+
+            <input class="form-control" id="audioChannels" name="audioChannels" type="number" min="1" max="2"
+                   ng-model="transcoderprofile.audio.channels" required/>
+    </div>
+</div>
+
+
+<div class="btn-group">
+
+</div>
+<div class="row">
+    <div class="col-sm-6 text-left">
+        <button class="btn btn-default" ui-sref="admin.transcoderprofile.list" translate="common.cancel.label">
+        </button>
+    </div>
+    <div class="col-sm-6 text-right">
+        <button class="btn btn-primary" ng-click="save()" ng-disabled="form.$pristine" translate="form.save.label">
+        </button>
+    </div>
+</div>
+</form>

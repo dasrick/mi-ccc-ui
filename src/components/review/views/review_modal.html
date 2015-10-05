@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 translate="review.select"></h3>
+</div>
+<form class="modal-body form-horizontal" name="form" novalidate>
+    <div class="form-group" ng-class="{'has-error': form.reviewer.$error.required}">
+        <div class="col-sm-5">
+            <select class="form-control"
+                    ng-model="reviewer"
+                    name="reviewer" required="required"
+                    ng-options="(user.firstName + ' ' + user.lastName) for user in userList track by user.id">
+                <option value="" translate="review.select"></option>
+            </select>
+        </div>
+    </div>
+</form>
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default"
+                    ng-click="cancel()"
+                    translate="common.cancel.label"></button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn btn-primary"
+                    ng-hide="!isList"
+                    ng-disabled="!reviewer"
+                    ng-click="ok()"
+                    translate="form.save.label"></button>
+        </div>
+    </div>
+</div>

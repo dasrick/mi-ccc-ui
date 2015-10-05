@@ -1,0 +1,41 @@
+<section class="list-simple"
+         ng-repeat="isCustom in [false, true]"
+         ng-show="(playerSkins | filter: {custom: isCustom}).length">
+    <h3 translate="player_skin.list.custom.{{isCustom}}.label"></h3>
+
+    <div class="box" ng-repeat="playerSkin in playerSkins | filter: {custom: isCustom}">
+        <div class="row">
+            <div class="col-sm-8">
+                <span class="title">{{playerSkin.name | translateModel}}</span>
+                <span ng-show="playerSkin.reviewStatus != 'none'" class="info" translate="review.under_review"></span>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button disabled
+                        type="button"
+                        class="btn btnc-primary"
+                        ><i class="fa fa-eye"></i></button>
+                <button ng-disabled="playerSkin.reviewStatus != 'none' || playerSkin.active == false  || (playerSkin.custom == true && playerSkin.inUse == false)"
+                        reviewable-action right="player_skin_delete" action="deactivate(playerSkin.id, reviewer)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.deactivate.label' | translate }}"
+                        has-type="admin"
+                        has-role="player_skin_delete"
+                        ng-show="hasType['admin'] && hasRole['player_skin_delete']">
+                    <i class="fa fa-qq"></i>
+                </button>
+                <button ng-if="isCustom"
+                        ng-disabled="playerSkin.inUse == true"
+                        ng-click="delete(playerSkin.id)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.delete.label' | translate }}"
+                        has-type="admin"
+                        has-role="player_skin_delete"
+                        ng-show="hasType['admin'] && hasRole['player_skin_delete']">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

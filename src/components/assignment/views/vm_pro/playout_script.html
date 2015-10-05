@@ -1,0 +1,12 @@
+<form name="form">
+
+    <div class="form-group" ng-class="{'has-error': form.script.$error.required}">
+        <textarea class="form-control" ng-model="assignmentDetailPlayoutScriptVm.playoutScript.script" required="required" name="script"></textarea>
+    </div>
+
+    <button class="btn btn-primary"
+            ng-click="assignmentDetailPlayoutScriptVm.save()"
+            ng-disabled="form.$invalid"
+            translate="form.save.label">
+    </button>
+</form>

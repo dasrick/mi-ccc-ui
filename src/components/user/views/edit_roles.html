@@ -1,0 +1,25 @@
+<form novalidate name="form" class="form-horizontal">
+    <fieldset ng-repeat="(groupName, group) in roles" ng-show="groupName != 'hidden'">
+        <legend translate="user.form.roles.{{groupName}}.label"></legend>
+        <div class="form-group">
+            <div class="col-sm-9">
+                <label ng-repeat="role in group" class="checkbox-inline">
+                    <input ng-disabled="isAdminChecked(groupName, role)" type="checkbox" ng-checked="inSelection(role)"
+                           name="selectedRoles[]" value="{{ role }}" ng-click="toggleSelection(role, groupName)">
+                    {{ 'user.form.roles.' + role + '.label' | translate }}
+                </label>
+
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button class="btn btn-default" ui-sref="base.usermanagement.list" translate="common.cancel.label"></button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn" ng-click="reset()" translate="form.reset.label"></button>
+            <button class="btn btn-primary" ng-click="editRoles()" ng-disabled="form.$invalid" translate="form.save.label"></button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,192 @@
+<wizard on-finish="create()">
+    <wz-step title="{{'assignment.product.duration.label' | translate}}">
+        <form name="form" class="form-horizontal" novalidate>
+            <div class="form-group" ng-class="{'has-error': form.startDate.$error.required}">
+                <label class="col-sm-3 control-label" for="startDate" translate>
+                    assignment.form.startDate.label
+                </label>
+
+                <div class="col-sm-3">
+                    <p class="input-group">
+                        <input id="startDate" name="startDate" type="text" class="form-control"
+                               datepicker-popup="dd.MM.yyyy"
+                               ng-model="assignment.duration.startDate" is-open="openedStartDate"
+                               min-date="actualMinStartDate"
+                               ng-required="true"
+                               show-button-bar="false"
+                                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="$parent.openStartDate($event)"><i
+                            class="fa fa-calendar"></i></button>
+                </span>
+                    </p>
+                </div>
+
+            </div>
+            <div class="form-group" ng-class="{'has-error': form.endDate.$error.validator}">
+                <label class="col-sm-3 control-label" for="endDate" translate>
+                    assignment.form.endDate.label
+                </label>
+
+                <div class="col-sm-3">
+                    <p class="input-group">
+                        <input id="endDate" name="endDate" type="text" class="form-control"
+                               datepicker-popup="dd.MM.yyyy"
+                               ng-model="assignment.duration.endDate" is-open="openedEndDate" min-date="actualMinEndDate"
+                               ng-required="true"
+                               show-button-bar="false"
+                               ui-validate=" '$value.getTime() > assignment.duration.startDate.getTime()' "
+                                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-disabled="!assignment.duration.startDate"
+                            ng-click="$parent.openEndDate($event)"><i
+                            class="fa fa-calendar"></i></button>
+                </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': form.product.$error.required}">
+                <label class="col-sm-3 control-label" for="product" translate>
+                    assignment.form.product.label
+                </label>
+
+                <div class="col-sm-9">
+                    <select required="required" id="product" name="product" class="form-control"
+                            ng-model="assignment.product.id"
+                            ng-options="product.id as product.name | translateModel for product in $parent.products">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-6 text-right">
+                    <button class="btn" wz-next ng-disabled="form.$invalid" translate>
+                        common.wizard.next
+                    </button>
+                </div>
+            </div>
+        </form>
+    </wz-step>
+    <wz-step title="{{'assignment.product.vm_pro.plans.label' | translate}}">
+        <form name="form" class="form-horizontal" novalidate>
+            <div class="form-group" ng-repeat="(key,plan) in $parent.plans">
+
+                <div class="col-sm-3 col-sm-offset-3">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="selectedPlans[key]" ng-change="enablePlan(plan, key)">
+                            {{plan.title}}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-3" ng-if="assignment.plans[key]" ng-class="{'has-error': form.plansStartDate{{key}}.$error.required}">
+                    <div class="input-group">
+                        <input name="plansStartDate{{key}}" type="text" class="form-control"
+                               datepicker-popup="dd.MM.yyyy"
+                               ng-model="assignment.plans[key].duration.startDate"
+                               is-open="openedStartDate[key]"
+                               min-date="actualMinStartDate"
+                               ng-required="true"
+                               show-button-bar="false"
+                               ui-validate=" '$value.getTime() < assignment.plans[key].duration.endDate.getTime()' "
+                               ui-validate-watch="'assignment.plans[{{key}}].duration.endDate'"
+                                />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openStartDate($event, key)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                    </div>
+                </div>
+                <div class="col-sm-3" ng-if="assignment.plans[key]" ng-class="{'has-error': form.plansEndDate{{key}}.$error.validator}">
+                    <div class="input-group">
+                        <input name="plansEndDate{{key}}" type="text" class="form-control"
+                               datepicker-popup="dd.MM.yyyy"
+                               ng-model="assignment.plans[key].duration.endDate" is-open="openedEndDate[key]"
+                               min-date="actualMinEndDate"
+                               ng-required="true"
+                               show-button-bar="false"
+                               ui-validate=" '$value.getTime() > assignment.plans[key].duration.startDate.getTime()' "
+                               ui-validate-watch="'assignment.plans[{{key}}].duration.startDate'"
+                                />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"
+                                                ng-disabled="!assignment.plans[key].duration.startDate"
+                                                ng-click="openEndDate($event, key)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-6 text-right">
+                    <button class="btn" wz-next ng-disabled="form.$invalid" translate>
+                        common.wizard.next
+                    </button>
+                </div>
+            </div>
+        </form>
+    </wz-step>
+
+    <wz-step title="{{'assignment.product.vm_pro.features.label' | translate}}">
+        <form name="form" class="form-horizontal" novalidate>
+            <div class="form-group" ng-repeat="(key,feature) in $parent.features">
+                    <div class="col-sm-3">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="additionalFeatures[key]" ng-change="enableFeature(feature, key)">
+                                {{feature.name | translateModel}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" ng-if="assignment.additionalFeatures[key]" ng-class="{'has-error': form.additionalFeaturesStartDate{{key}}.$error.required}">
+                        <div class="input-group">
+                            <input name="additionalFeaturesStartDate{{key}}" type="text" class="form-control"
+                                   datepicker-popup="dd.MM.yyyy"
+                                   ng-model="assignment.additionalFeatures[key].duration.startDate"
+                                   is-open="openedStartDate[key]"
+                                   min-date="actualMinStartDate"
+                                   ng-required="true"
+                                   show-button-bar="false"
+                                   ui-validate=" '$value.getTime() < assignment.additionalFeatures[key].duration.endDate.getTime()' "
+                                   ui-validate-watch="'assignment.additionalFeatures[{{key}}].duration.endDate'"
+                                    />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="$parent.openStartDate($event, key)">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" ng-if="assignment.additionalFeatures[key]" ng-class="{'has-error': form.additionalFeaturesEndDate{{key}}.$error.validator}">
+                        <div class="input-group">
+                            <input name="additionalFeaturesEndDate{{key}}" type="text" class="form-control"
+                                   datepicker-popup="dd.MM.yyyy"
+                                   ng-model="assignment.additionalFeatures[key].duration.endDate" is-open="openedEndDate[key]"
+                                   min-date="actualMinEndDate"
+                                   ng-required="true"
+                                   show-button-bar="false"
+                                   ui-validate=" '$value.getTime() > assignment.additionalFeatures[key].duration.startDate.getTime()' "
+                                   ui-validate-watch="'assignment.additionalFeatures[{{key}}].duration.startDate'"
+                                    />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-disabled="!assignment.additionalFeatures[key].duration.startDate"
+                                        ng-click="$parent.openEndDate($event, key)">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-6 text-right">
+                    <button class="btn" wz-next translate ng-disabled="form.$invalid">
+                        common.wizard.finish
+                    </button>
+                </div>
+            </div>
+        </form>
+    </wz-step>
+</wizard>

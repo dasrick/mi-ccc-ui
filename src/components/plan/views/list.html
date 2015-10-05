@@ -1,0 +1,35 @@
+<section class="list-simple" ng-show="plans.length">
+    <div class="box" ng-repeat="plan in plans">
+        <div class="row">
+            <div class="col-sm-8">
+                <div>
+                    <span class="title">{{::plan.title}}</span>
+                    <span ng-show="plan.reviewStatus != 'none'" class="info" translate="review.under_review"></span>
+                </div>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button ng-disabled="plan.reviewStatus != 'none'"
+                        ui-sref="admin.plan.detail.edit({id:plan.id})"
+                        type="button"
+                        class="btn btnc-primary"
+                        title="{{ 'common.edit.label' | translate }}"
+                        has-type="admin"
+                        has-role="plan_edit"
+                        ng-show="hasType['admin'] && hasRole['plan_edit']">
+                    <i class="fa fa-pencil"></i>
+                </button>
+
+                <button ng-disabled="plan.reviewStatus != 'none'"
+                        reviewable-action right="plan_delete" action="delete(plan.id, reviewer)"
+                        type="button"
+                        class="btn btnc-danger"
+                        title="{{ 'common.delete.label' | translate }}"
+                        has-type="admin"
+                        has-role="plan_delete"
+                        ng-show="hasType['admin'] && hasRole['plan_delete']">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

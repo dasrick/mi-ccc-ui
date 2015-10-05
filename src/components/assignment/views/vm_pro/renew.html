@@ -1,0 +1,38 @@
+<form name="form" class="form-horizontal" novalidate>
+    <div class="form-group" ng-class="{'has-error': form.renewEndDate.$error.required}">
+        <label class="col-sm-3 control-label" translate>
+            assignment.form.renew_end_date.label
+        </label>
+
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input name="renewEndDate" type="text" class="form-control"
+                       datepicker-popup="dd.MM.yyyy"
+                       ng-model="duration.endDate" is-open="openedEndDate"
+                       min-date="actualMinEndDate"
+                       ng-required="true"
+                       show-button-bar="false"
+                        />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    ng-click="openEndDate($event, key)">
+                <i class="fa fa-calendar"></i>
+            </button>
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 text-left">
+        <button class="btn btn-default" ui-sref="base.assignment.list" translate>
+            common.cancel.label
+        </button>
+    </div>
+    <div class="col-sm-6 text-right">
+        <button class="btn" ng-click="reset()" ng-disabled="form.$pristine" translate>
+            form.reset.label
+        </button>
+        <button class="btn btn-primary" ng-click="renew()" ng-disabled="form.$invalid" translate>
+            form.save.label
+        </button>
+    </div>
+</form>

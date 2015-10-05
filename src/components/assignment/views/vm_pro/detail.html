@@ -1,0 +1,81 @@
+<section class="assignment-detail">
+    <div class="row">
+        <div class="col-sm-3 col-lg-2">
+            <div class="icon">
+                <i class="fa" ng-class="{'fa-film' : detail.product.productType == 1}"></i>
+            </div>
+        </div>
+        <div class="col-sm-7 col-lg-8">
+            <h3>{{detail.name}}</h3>
+            <h4>{{detail.product.name[lang]}}</h4>
+            <p>
+                <span translate="assignment.product.duration.label"></span><br>
+                <span>{{detail.duration.startDate | date : 'dd.MM.yyyy'}}</span>
+                <span translate="common.range.to"></span>
+                <span>{{detail.duration.endDate | date : 'dd.MM.yyyy'}}</span>
+            </p>
+        </div>
+        <div class="col-sm-2 text-right">
+            <button class="btn btnc-primary"
+                    title="{{ 'assignment.refresh.label' | translate }}"
+                    ng-if="durationType == 'active'"
+                    has-role="assignment_create"
+                    ng-show="hasRole['assignment_create']"
+                    ng-click="refreshAssignment(detail.id)">
+                <i class="fa fa-cloud-download"></i>
+            </button>
+            <button class="btn btnc-info"
+                    title="{{ 'assignment.renew.label' | translate }}"
+                    ng-if="durationType == 'active'"
+                    has-role="assignment_create"
+                    ng-show="hasRole['assignment_create']"
+                    ui-sref="base.assignment.detail.renew({assignmentId:detail.id, type: detail.product.productType})">
+                <i class="fa fa-fighter-jet"></i>
+            </button>
+            <button class="btnc-danger btn"
+                    title="{{ 'assignment.deactivate.label' | translate }}"
+                    ng-if="durationType != 'inactive'"
+                    has-role="assignment_deactivate"
+                    ng-show="hasRole['assignment_deactivate']"
+                    ng-click="deactivateAssignment(detail.id)">
+                <i class="fa fa-ban"></i>
+            </button>
+            <button class="btnc-info btn"
+                    title="{{ 'assignment.reactivate.label' | translate }}"
+                    ng-if="durationType == 'inactive'"
+                    has-role="assignment_create"
+                    ng-show="hasRole['assignment_create']"
+                    ui-sref="base.assignment.detail.reactivate({assignmentId:detail.id, type: detail.product.productType})">
+                <i class="fa fa-refresh"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<nav class="assignment-navbar" role="navigation">
+    <ul>
+        <li ui-sref-active="active">
+            <a ui-sref="base.assignment.detail.features"
+               translate="assignment.product.vm_pro.features.label"></a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="base.assignment.detail.plans"
+               translate="assignment.product.vm_pro.plans.label"></a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="base.assignment.detail.player_skins"
+               translate="assignment.product.vm_pro.player_skins.label"></a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="base.assignment.detail.transcoder_profiles"
+               translate="assignment.product.vm_pro.transcoder_profiles.label"></a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="base.assignment.detail.playout_script"
+               translate="assignment.product.vm_pro.playout_script.label"></a>
+        </li>
+
+    </ul>
+</nav>
+
+<div ui-view="detail"></div>

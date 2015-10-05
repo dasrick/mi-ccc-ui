@@ -1,0 +1,34 @@
+<aside class="cs-2 col-left">
+    <section class="section-body">
+        <ul class="list-unstyled level-list">
+            <li>
+                <div class="heading">
+                    <span class="title" translate="common.section.profile.label"></span>
+                </div>
+                <ul class="list-unstyled">
+                    <li is-in-base-state="profile.user" ng-class="{ 'selected' : isInBaseState['profile.user'] }">
+                        <a ui-sref="profile.user.data">
+                            <i class="fa fa-user"></i>
+                            <span class="title" translate="nav.profile.user.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="profile.customer"
+                        ng-class="{ 'selected' : isInBaseState['profile.customer'] }">
+                        <a ui-sref="profile.customer">
+                            <i class="fa fa-globe"></i>
+                            <span class="title" translate="nav.profile.customer.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="profile.reviews" ng-class="{ 'selected' : isInBaseState['profile.reviews'] }">
+                        <a ui-sref="profile.reviews">
+                            <i class="fa fa-globe"></i>
+                            <span class="title" translate="nav.profile.reviews.label"></span>
+                            <span class="badge">{{reviews.reviewer.length}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</aside>
+<aside class="col-main-right data" ui-view="data"></aside>

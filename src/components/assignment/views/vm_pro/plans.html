@@ -1,0 +1,88 @@
+<div has-role="assignment_create"
+     ng-show="hasRole['assignment_create'] && durationType!='inactive'"
+     ng-cloak
+     ng-init="additionalAssignmentsForm.isShown = false">
+
+    <section class="assignment-subdetail-add" ng-hide="additionalAssignmentsForm.isShown">
+        <a ng-click="additionalAssignmentsForm.isShown = true">
+            <div class="box">
+                <div class="title">
+                    <i class="fa fa-plus"></i><span translate="assignment.add_plan.label"></span>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <section class="assignment-subdetail-form" ng-show="additionalAssignmentsForm.isShown">
+        <div class="box">
+            <div class="row">
+                <div class="col-sm-4">
+                    <form name="form" novalidate ng-show="additionalAssignmentsForm.isShown">
+                        <div class="form-group" ng-class="{'has-error': form.plan.$error.required}">
+                            <label class="control-label" translate="assignment.product.plans.label"></label>
+
+                            <div ng-hide="plans.length > 0">
+                                <span translate="product.plan.list.empty"></span>
+                            </div>
+                            <div ng-show="plans.length > 0" ng-repeat="plan in plans">
+                                <div class="radio">
+                                    <label>
+                                        <input name="plan"
+                                               required="required"
+                                               type="radio"
+                                               ng-model="addAssignment.plan"
+                                               ng-value="plan.id">
+                                        {{plan.title}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <duration ng-model="addAssignment" form="form" ng-show="plans.length > 0"></duration>
+                        <button class="btn btn-primary"
+                                ng-click="create('plan')"
+                                ng-disabled="form.$invalid"
+                                translate="common.add.label">
+                        </button>
+                        <button class="btn btn-default"
+                                ng-click="reset(); additionalAssignmentsForm.isShown = false"
+                                translate="common.cancel.label">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section ng-repeat="type in ['active', 'future', 'inactive']"
+         ng-show="(detail.plans | assignmentFilter:type).length"
+         class="assignment-subdetail-additional-{{type}}">
+    <h3  translate="assignment.plans.{{type}}.label"></h3>
+
+    <div class="box" ng-repeat="assignment in detail.plans | assignmentFilter:type">
+        <div class="row">
+            <div class="col-sm-10">
+                <span class="title">{{assignment.plan.title | translate}}</span>
+                <span class="date">{{assignment.duration.startDate | date : 'dd.MM.yyyy'}} - {{assignment.duration.endDate| date : 'dd.MM.yyyy'}}</span>
+                <span class="date-deactivate"
+                      ng-show="assignment.inactiveDate"
+                      translate
+                      translate-values="{date : '{{assignment.inactiveDate | date : 'dd.MM.yyyy'}}'}">assignment.deactivate_date.label</span>
+            </div>
+            <div class="col-sm-2 text-right">
+                <button ng-if="type != 'inactive'" class="btnc-danger btn" ng-click="deactivate(assignment.id, 'plan')"
+                        has-role="assignment_deactivate"
+                        ng-show="hasRole['assignment_deactivate']"
+                        title="{{ 'assignment.deactivate.label' | translate }}">
+                    <i class="fa fa-ban"></i>
+                </button>
+                <button ng-if="type == 'inactive'" class="btnc-info btn" ng-click="reactivate(assignment, 'plan')"
+                        has-role="assignment_create"
+                        ng-show="hasRole['assignment_create']"
+                        title="{{ 'assignment.reactivate.label' | translate }}">
+                    <i class="fa fa-refresh"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
