@@ -1,0 +1,9 @@
+{
+    "log.title": "Protokoll",
+    "log.date.label": "Datum",
+    "log.user.label": "Benutzer",
+    "log.action.update.label": "Verändert",
+    "log.action.create.label": "Erzeugt",
+    "log.action.remove.label": "Gelöscht",
+    "log.action.label": "Aktion"
+}

@@ -1,0 +1,16 @@
+{
+  "plan.title": "Tarife",
+  "plan.sidebar.label": "Tarife",
+  "plan.sidebar.title": "Tarife verwalten",
+  "plan.new.label": "Neu",
+  "plan.new.title": "Neuer Tarif",
+  "plan.list.label": "Liste",
+  "plan.list.title": "Liste der Tarife",
+  "plan.list.empty": "Es wurden keine Tarife gefunden",
+  "plan.edit.label": "Berarbeitung eines Tarifs",
+  "plan.form.title.label": "Titel",
+  "plan.form.hosting.label": "Hosting",
+  "plan.form.traffic.label": "Traffic",
+  "plan.form.user.label": "User",
+  "plan.form.type.help": "Bitte wählen Sie min. einen Tarif-Typen aus."
+}

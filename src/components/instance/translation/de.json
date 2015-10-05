@@ -1,0 +1,43 @@
+{
+  "instance.title": "Instanzen",
+
+  "instance.sidebar.label": "Instanzen",
+  "instance.sidebar.title": "Eine Liste der verfügbaren Instanzen wird angezeigt",
+
+  "instance.list.title": "Liste der Instanzen",
+  "instance.list.label": "Liste",
+
+  "instance.new.title": "Neue Instanzen anlegen",
+  "instance.new.label": "Neu",
+
+  "instance.edit.title": "Instanz aktualisieren",
+  "instance.edit.label": "Bearbeiten",
+
+  "instance.form.section.general.title": "Allgemeines",
+  "instance.form.section.vmpro.title": "VMPro-Einstellungen",
+  "instance.form.section.auth.title": "Auth-Einstellungen",
+
+  "instance.form.name.label": "Name",
+  "instance.form.name.tooltip": "Dieser Name wird für die Anzeige bei der Auswahl innerhalb der Produktzuweisung verwendet.",
+  "instance.form.base_url.label": "Base-URL",
+  "instance.form.base_url.tooltip": "Diese URL zeigt auf die VMPRO-Instanz, die angepsrochern werden soll. Bitte inkl. Schema eingeben.",
+  "instance.form.auth_url.label": "Auth-URL",
+  "instance.form.auth_url.tooltip": "Diese URL zeigt auf die Instanz, welche für die Authentifizierung angepsrochern werden soll. Bitte inkl. Schema eingeben.",
+
+  "instance.form.auth_client_id.label": "Client-ID",
+  "instance.form.auth_client_id.tooltip": "",
+  "instance.form.auth_client_secret.label": "Client-Secret",
+  "instance.form.auth_client_secret.tooltip": "",
+  "instance.form.auth_username.label": "Benutzername",
+  "instance.form.auth_username.tooltip": "",
+  "instance.form.auth_password.label": "Passwort",
+  "instance.form.auth_password.tooltip": "",
+
+
+  "vmproinstance.all.error.backend": "Fehler beim Aufruf der API. (GET ALL INSTANCES)",
+  "vmproinstance.get.error.backend": "Fehler beim Aufruf der API. (GET INSTANCE)",
+  "vmproinstance.create.error.backend": "Fehler beim Aufruf der API. (CREATE INSTANCE)",
+  "vmproinstance.update.error.backend": "Fehler beim Aufruf der API. (UPDATE INSTANCE)",
+  "vmproinstance.deactivate.error.backend": "Fehler beim Aufruf der API. (DEACTIVATE INSTANCE)",
+  "vmproinstance.delete.error.backend": "Fehler beim Aufruf der API. (DELETE INSTANCE)"
+}

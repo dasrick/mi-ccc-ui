@@ -1,0 +1,81 @@
+{
+    "user.title": "Benutzermanagement",
+    "user.new.label": "Neu",
+    "user.new.title": "Neuer Benutzer",
+    "user.new.success": "Neuer Benutzer wurde angelegt.",
+    "user.edit_data.label": "Benutzerdaten bearbeiten",
+    "user.edit_roles.label": "Benutzerrechte verwalten",
+    "user.list.label": "Liste",
+    "user.list.title": "Liste aller Benutzer",
+    "user.lock.label": "Benutzer sperren/entsperren",
+    "user.global.label": "Liste aller Benutzer",
+    "user.password.update": "Das Passwort wurde erfolgreich geändert.",
+    "user.requestpassword.success": "Das Passwort wurde erfolgreich neu angefordert.",
+    "user.requestpassword.error.backend": "Bei 'Request Password' ist ein Fehler während der Backend-Kommunikation aufgetreten.",
+    "user.form.firstName.label": "Vorname",
+    "user.form.lastName.label": "Nachname",
+    "user.form.email.label": "E-Mail",
+    "user.form.locale.label": "Sprache",
+
+    "user.form.roles.admin.label": "Administrator",
+
+    "user.form.roles.assignment.label": "Produktzuordnungen",
+    "user.form.roles.assignment_create.label": "Produktzuordnung anlegen",
+    "user.form.roles.assignment_edit.label": "Produktzuordnung bearbeiten",
+    "user.form.roles.assignment_deactivate.label": "Produktzuordnung deaktivieren",
+    "user.form.roles.assignment_admin.label": "Produktzuordnung-Administrator",
+
+    "user.form.roles.customer.label": "Kunden",
+    "user.form.roles.customer_create.label": "Kunde anlegen",
+    "user.form.roles.customer_edit.label": "Kunde bearbeiten",
+    "user.form.roles.customer_delete.label": "Kunde löschen",
+    "user.form.roles.customer_admin.label": "Kunden-Administrator",
+
+    "user.form.roles.instance.label": "Instanzen",
+    "user.form.roles.instance_create.label": "Instanz anlegen",
+    "user.form.roles.instance_read.label": "Instanz(en) lesen",
+    "user.form.roles.instance_edit.label": "Instanz bearbeiten",
+    "user.form.roles.instance_delete.label": "Instanz löschen",
+    "user.form.roles.instance_admin.label": "Instanz-Administrator",
+
+    "user.form.roles.plan.label": "Tarife",
+    "user.form.roles.plan_create.label": "Tarif anlegen",
+    "user.form.roles.plan_read.label": "Tarif(e) lesen",
+    "user.form.roles.plan_edit.label": "Tarif bearbeiten",
+    "user.form.roles.plan_delete.label": "Tarif löschen",
+    "user.form.roles.plan_admin.label": "Tarif-Administrator",
+
+    "user.form.roles.player_skin.label": "Player Skins",
+    "user.form.roles.player_skin_create.label": "Player Skin anlegen",
+    "user.form.roles.player_skin_edit.label": "Player Skin bearbeiten",
+    "user.form.roles.player_skin_delete.label": "Player Skin löschen",
+    "user.form.roles.player_skin_admin.label": "Player Skin-Administrator",
+
+    "user.form.roles.product.label": "Produkte",
+    "user.form.roles.product_create.label": "Produkt anlegen",
+    "user.form.roles.product_edit.label": "Produkt bearbeiten",
+    "user.form.roles.product_delete.label": "Produkt löschen",
+    "user.form.roles.product_admin.label": "Produkt-Administrator",
+
+    "user.form.roles.transcoderprofile.label": "Transcoder Profile",
+    "user.form.roles.transcoderprofile_read.label": "Transcoder Profil(e) lesen",
+    "user.form.roles.transcoderprofile_create.label": "Transcoder Profil anlegen",
+    "user.form.roles.transcoderprofile_edit.label": "Transcoder Profil bearbeiten",
+    "user.form.roles.transcoderprofile_delete.label": "Transcoder Profil löschen",
+    "user.form.roles.transcoderprofile_admin.label": "Transcoder Profil-Administrator",
+
+    "user.form.roles.user.label": "Benutzer",
+    "user.form.roles.user_create.label": "Benutzer anlegen",
+    "user.form.roles.user_edit.label": "Benutzer bearbeiten",
+    "user.form.roles.user_delete.label": "Benutzer löschen",
+    "user.form.roles.user_set_role.label": "Benutzerrechte verwalten",
+    "user.form.roles.user_admin.label": "Benutzer-Administrator",
+
+    "user.form.password.current.label": "Aktuelles Passwort",
+    "user.form.password.new.first.label": "Neues Passwort",
+    "user.form.password.new.second.label": "Neues Passwort wiederholen",
+
+    "user.create.success": "Benutzer erfolgreich angelegt",
+
+    "user.data.update": "Benutzerdaten erfolreich geändert"
+}

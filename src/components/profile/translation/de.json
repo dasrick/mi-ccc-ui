@@ -1,0 +1,11 @@
+{
+    "profile.title" : "Profil",
+
+    "profile.user.title" : "Benutzerprofil",
+    "profile.user.edit.data.title" : "Meine Daten bearbeiten",
+    "profile.user.edit.data.label" : "Daten",
+
+    "profile.user.edit.password.title" : "Meine Passwort ändern",
+    "profile.user.edit.password.label" : "Passwort"
+
+}

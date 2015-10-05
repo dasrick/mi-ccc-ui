@@ -1,0 +1,107 @@
+<aside class="cs-2 col-left">
+    <section class="section-body">
+        <ul class="list-unstyled level-list">
+            <li>
+                <div class="heading">
+                    <span class="title" translate="common.section.customer.label"></span>
+                </div>
+                <ul class="list-unstyled">
+                    <li is-in-base-state="base.dashboard" ng-class="{ 'selected' : isInBaseState['base.dashboard']}">
+                        <a ui-sref="base.dashboard">
+                            <i class="fa fa-dashboard"></i>
+                            <span class="title" translate="common.dashboard.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="base.customermanagement" exclude="global"
+                        ng-class="{ 'selected' : isInBaseState['base.customermanagement']}"
+                        ng-show="singleCustomer.type == 'admin' || singleCustomer.type == 'partner' ">
+                        <a ui-sref="base.customermanagement.list">
+                            <i class="fa fa-building-o"></i>
+                            <span class="title" translate="common.customer.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="base.usermanagement" exclude="global"
+                        ng-class="{ 'selected' : isInBaseState['base.usermanagement']}">
+                        <a ui-sref="base.usermanagement.list">
+                            <i class="fa fa-users"></i>
+                            <span class="title" translate="common.user.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="base.assignment"
+                        ng-class="{ 'selected' : isInBaseState['base.assignment']}">
+                        <a ui-sref="base.assignment.list">
+                            <i class="fa fa-suitcase"></i>
+                            <span class="title" translate="common.product.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="base.log"
+                        ng-class="{ 'selected' : isInBaseState['base.log']}">
+                        <a ui-sref="base.log">
+                            <i class="fa fa-list-alt"></i>
+                            <span class="title" translate="common.log.label"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="ng-hide" ng-show="currentUser.customer.type == 'admin'">
+                <div class="heading">
+                    <span class="title" translate="common.section.administration.label"></span>
+                </div>
+                <ul class="list-unstyled">
+                    <li is-in-base-state="admin.product" ng-class="{ 'selected' : isInBaseState['admin.product']}">
+                        <a ui-sref="admin.product.list">
+                            <i class="fa fa-suitcase"></i>
+                            <span class="title" translate="common.product_management.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="admin.plan" ng-class="{ 'selected' : isInBaseState['admin.plan']}">
+                        <a ui-sref="admin.plan.list">
+                            <i class="fa fa-money"></i>
+                            <span class="title" translate="common.plan.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="admin.transcoderprofile"
+                        ng-class="{ 'selected' : isInBaseState['admin.transcoderprofile']}"
+                        has-role="transcoderprofile_read"
+                        ng-show="hasRole['transcoderprofile_read']">
+                        <a ui-sref="admin.transcoderprofile.list">
+                            <i class="fa fa-film"></i>
+                            <span class="title" translate="common.transcoderprofile.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="admin.player_skin"
+                        ng-class="{ 'selected' : isInBaseState['admin.player_skin']}">
+                        <a ui-sref="admin.player_skin.list">
+                            <i class="fa fa-play-circle"></i>
+                            <span class="title" translate="common.player_skin.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="admin.instance"
+                        ng-class="{ 'selected' : isInBaseState['admin.instance']}"
+                        has-role="instance_read"
+                        ng-show="hasRole['instance_read']">
+                        <a ui-sref="admin.instance.list" title="{{'instance.sidebar.title'|translate}}">
+                            <i class="fa fa-cubes"></i>
+                            <span class="title" translate="instance.sidebar.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="admin.customermanagement.global"
+                        ng-class="{ 'selected' : isInBaseState['admin.customermanagement.global']}">
+                        <a ui-sref="admin.customermanagement.global">
+                            <i class="fa fa-building-o"></i>
+                            <span class="title" translate="common.global_customer.label"></span>
+                        </a>
+                    </li>
+                    <li is-in-base-state="admin.user.global"
+                        ng-class="{ 'selected' : isInBaseState['admin.user.global']}">
+                        <a ui-sref="admin.user.global">
+                            <i class="fa fa-users"></i>
+                            <span class="title" translate="common.global_user.label"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</aside>
+<aside class="col-main-right data" ui-view="data"></aside>

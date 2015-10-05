@@ -1,0 +1,20 @@
+<div class="translateModel">
+    <div ng-repeat="(language,value) in ngModel" class="form-group" ng-class="{'has-error': form.translate_{{language}}.$error.required}">
+        <label class="col-sm-1 control-label" for="{{language}}">
+            {{locales[language]}}
+        </label>
+
+        <div class="col-sm-11">
+            <input class="form-control" id="{{language}}" name="translate_{{language}}" type="text" ng-model="ngModel[language]" required>
+        </div>
+    </div>
+    <div class="btn-group" dropdown ng-show="notUsedLanguages.length > 0">
+        <button type="button" class="btn btn-info" translate>product.form.add_language</button>
+        <button type="button" class="btn btn-info dropdown-toggle">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="lang in notUsedLanguages"><a ng-click="addLanguage(lang)">{{locales[lang]}}</a></li>
+        </ul>
+    </div>
+</div>

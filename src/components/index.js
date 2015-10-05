@@ -3,7 +3,7 @@
 module.exports = require('angular')
   .module('components', [
     //require('./assignment').name,
-    //require('./core').name,
+    require('./core').name,
     //require('./customer').name,
     //require('./dashboard').name,
     //require('./instance').name,

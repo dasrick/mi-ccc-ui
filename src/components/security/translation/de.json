@@ -1,0 +1,17 @@
+{
+    "security.form.email.placeholder": "name@ccc.local",
+    "security.form.password.placeholder": "Passwort",
+    "security.form.save_password.label": "Passwort setzen",
+    "security.form.login.label": "Anmelden",
+    "security.form.login.header": "Anmelden",
+    "security.form.login.msg": "Geben Sie hier bitte ihre Login-Daten ein.",
+    "security.form.password.error": "Passwörter müssen übereinstimmen",
+    "security.form.request_password.label": "Passwort anfordern",
+    "security.form.forgot_password.label": "Passwort vergessen?",
+    "security.form.forgot_password.header": "Passwort zurücksetzen",
+    "security.form.forgot_password.msg": "Geben Sie bitte Ihre Emailadresse an, um ein neues Passwort anzufordern.",
+    "security.form.set_password.header": "Neues Passwort setzen",
+    "security.form.set_password.msg": "Geben Sie bitte Ihre Emailadresse und das neue Passwort an.",
+    "security.alert.user_locked" : "Ihr Zugang wurde gesperrt. Bitte kontaktieren Sie Ihren Administrator.",
+    "success.security.new_password": "Neues Passwort erfolgreich gesetzt"
+}

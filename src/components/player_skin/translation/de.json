@@ -1,0 +1,47 @@
+{
+    "player_skin.title": "Player Skins",
+    "player_skin.sidebar.label": "Player Skins",
+    "player_skin.sidebar.title": "Player Skins verwalten",
+
+    "player_skin.new.label": "Neu",
+    "player_skin.new.title": "Neuer Player Skin",
+
+    "player_skin.list.label": "Liste",
+    "player_skin.list.title": "Liste der Player Skins",
+
+    "player_skin.list.custom.false.label" : "Standard Player Skins",
+    "player_skin.list.custom.true.label" : "Individuelle Player Skins",
+
+    "player_skin.form.name.label": "Name",
+    "player_skin.form.custom.label": "Individueller Skin",
+    "player_skin.form.custom.title": "Individueller Skin",
+    "player_skin.form.skinfile.label": "Skin",
+    "player_skin.form.background.default.colors.label" : "Hintergrund-Farbe",
+    "player_skin.form.button.active.colors.label" : "Button-Aktiv-Farbe",
+    "player_skin.form.button.default.colors.label" : "Button-Farbe",
+    "player_skin.form.button.hover.colors.label" : "Button-Hover-Farbe",
+    "player_skin.form.slider.text.colors.label" : "Slider-Text-Farbe",
+    "player_skin.form.slider.progress.colors.label" : "Slider-Fortschritt-Farbe",
+    "player_skin.form.slider.background.colors.label" : "Slider-Hintergrund-Farbe",
+
+
+    "player_skin.form.big_play_button.label": "Big-Play-Button",
+    "player_skin.form.playButton.label": "Play-Button",
+    "player_skin.form.stopButton.label": "Stop-Button",
+    "player_skin.form.slider.label": "Slider",
+    "player_skin.form.mute.label": "Mute",
+    "player_skin.form.volume.label": "Lautstärke",
+    "player_skin.form.volumeBackground.label": "Lautstärke-Hintergrund",
+    "player_skin.form.buttonSeparator.label": "Button-Trenner",
+    "player_skin.form.sliderBackground.label": "Slider-Hintergrund",
+    "player_skin.form.sliderBuffer.label": "Slider-Buffer",
+    "player_skin.form.sliderProgress.label": "Slider-Progress",
+    "player_skin.form.fullScreen.label": "Vollbild",
+    "player_skin.form.bigPlayButton.label": "Big-Play-Button",
+    "player_skin.form.button_width.label": "Breite",
+    "player_skin.form.button_height.label": "Höhe",
+    "player_skin.form.button_x.label": "X Koordinate",
+    "player_skin.form.button_y.label": "Y Koordinate",
+    "player_skin.form.preview.label": "Vorschau"
+
+}

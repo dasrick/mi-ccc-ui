@@ -1,0 +1,31 @@
+{
+    "customer.title": "Kundenmanagement",
+
+    "customer.new.label": "Neu",
+    "customer.new.title": "Neuen Kunden anlegen",
+    "customer.new.success": "Neuer Kunde wurde angelegt.",
+
+    "customer.edit.label": "Kunden bearbeiten",
+    "customer.edit.success": "Kundendaten erfolgreich geändert",
+
+    "customer.global.label": "Liste aller Kunden",
+
+    "customer.list.label": "Liste",
+    "customer.list.title": "Liste der Kunden anzeigen",
+    "customer.list.switch": "Auf diesen Kunden wechseln",
+
+    "customer.form.name.label": "Unternehmen/ Verband",
+    "customer.form.street.label": "Straße",
+    "customer.form.zip.label": "Postleitzahl",
+    "customer.form.city.label": "Stadt",
+    "customer.form.country.label": "Land",
+    "customer.form.phone.label": "Telefon",
+    "customer.form.type.label": "Type",
+    "customer.form.fax.label": "Fax",
+    "customer.form.contact.label": "Kontakt",
+    "customer.form.contact.title.label" : "Titel",
+    "customer.form.contact.salutation.label" : "Anrede",
+    "customer.form.contact.firstName.label" : "Vorname",
+    "customer.form.contact.lastName.label" : "Nachname",
+    "customer.form.contact.email.label" : "E-Mail"
+}

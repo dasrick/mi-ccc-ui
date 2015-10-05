@@ -1,0 +1,49 @@
+{
+    "transcoderprofile.title": "Transcoder Profile",
+
+    "transcoderprofile.sidebar.label": "Transcoder Profile",
+    "transcoderprofile.sidebar.title": "Eine Liste der verfügbaren Transcoder Profile wird angezeigt",
+
+    "transcoderprofile.list.title": "Liste der Profile",
+    "transcoderprofile.list.label": "Liste",
+    "transcoderprofile.list.empty": "Es wurden keine Transcoder Profile gefunden",
+    "transcoderprofile.list.custom.false.label" : "Standard Transcoder Profile",
+    "transcoderprofile.list.custom.true.label" : "Individuelle Transcoder Profile",
+
+    "transcoderprofile.detail.title": "Detail Profile",
+
+    "transcoderprofile.new.title": "Neues Profil anlegen",
+    "transcoderprofile.new.label": "Neu",
+
+    "transcoderprofile.edit.title": "Profil bearbeiten",
+    "transcoderprofile.edit.label": "Edit Profile",
+
+    "transcoderprofile.form.section.general.title": "Allgemeines",
+    "transcoderprofile.form.section.video.title": "Video",
+    "transcoderprofile.form.section.audio.title": "Audio",
+    "transcoderprofile.form.key.label": "Profilkey",
+    "transcoderprofile.form.custom.label": "Profiltyp",
+    "transcoderprofile.form.custom.title": "Custom-Profil",
+    "transcoderprofile.form.quality.label": "Qualitäts-Schlüssel",
+    "transcoderprofile.form.quality.title": "Qualitäts-Schlüssel",
+    "transcoderprofile.form.still.create.label": "Screenshot",
+    "transcoderprofile.form.still.create.title": "erzeugen",
+    "transcoderprofile.form.select.empty": "Bitte wählen",
+    "transcoderprofile.form.container.codec.label": "Container Codec",
+    "transcoderprofile.form.file.extension.label": "File Extension",
+    "transcoderprofile.form.still.extension.label": "Screenshot Extension",
+    "transcoderprofile.form.video.codec.label": "Video Codec",
+    "transcoderprofile.form.video.codec.preset.label": "Preset",
+    "transcoderprofile.form.video.codec.profile.label": "Profile",
+    "transcoderprofile.form.video.width.label": "Video Breite",
+    "transcoderprofile.form.video.height.label": "Video Höhe",
+    "transcoderprofile.form.video.keyframe.label": "Video Keyframes",
+    "transcoderprofile.form.video.framerate.label": "Video Framerate",
+    "transcoderprofile.form.video.bitrate.label": "Video Bitrate",
+    "transcoderprofile.form.video.aspectratio.width.label": "Aspect Ratio Breite",
+    "transcoderprofile.form.video.aspectratio.height.label": "Aspect Ratio Höhe",
+    "transcoderprofile.form.audio.codec.label": "Audio Codec",
+    "transcoderprofile.form.audio.bitrate.label": "Audio Bitrate",
+    "transcoderprofile.form.audio.samplerate.label": "Audio Samplerate",
+    "transcoderprofile.form.audio.channels.label": "Audio Channels"
+}
