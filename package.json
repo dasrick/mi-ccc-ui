@@ -56,6 +56,7 @@
     "mi24-bootstrap": "^0.3.4",
     "nconf": "^0.8.1",
     "ng-annotate-webpack-plugin": "^0.1.2",
+    "npm-font-source-sans-pro": "0.0.3",
     "parallelshell": "^2.0.0",
     "phantomjs": "^1.9.18",
     "sinon": "^1.17.1",
@@ -67,12 +68,12 @@
   },
   "scripts": {
     "start": "node index.js",
-
-    "prebuild": "mkdir -p app/css",
-    "build": "npm run build:css",
-
+    "prebuild": "mkdir -p app/css app/fonts/font-awesome app/fonts/source-sans-pro",
+    "build": "npm run build:css && npm run build:fonts",
     "build:css": "lessc --clean-css='--s1' --autoprefix='last 2 versions' src/media/less/style.less app/css/style.css",
-
+    "build:fonts": "npm run build:font-fontawesome && npm run build:font-sourcesanspro",
+    "build:font-fontawesome": "cp -R node_modules/font-awesome/fonts/* app/fonts/font-awesome",
+    "build:font-sourcesanspro": "cp -R node_modules/npm-font-source-sans-pro/fonts/* app/fonts/source-sans-pro",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
