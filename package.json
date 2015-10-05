@@ -1,0 +1,22 @@
+{
+  "name": "mi-ccc-ui",
+  "version": "0.0.0",
+  "description": "AngularJS client for Customer Control Center of movingimage",
+  "main": "index.js",
+  "author": "Enrico Hoffmann",
+  "license": "MIT",
+  "keywords": [
+    "angularjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dasrick/mi-ccc-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dasrick/mi-ccc-ui/issues"
+  },
+  "homepage": "https://github.com/dasrick/mi-ccc-ui#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
