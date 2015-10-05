@@ -1,0 +1,182 @@
+.data {
+  // overview
+  section {
+    &[class*="assignment-overview-"] {
+      // START - overwrite bootstrap col spacing
+      @col-spacing: 5px;
+      .row {
+        margin-right: @col-spacing * -1;
+        margin-left: @col-spacing * -1;
+      }
+      .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+      .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+      .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+      .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+      .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
+      .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+      .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
+      .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
+      .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+      .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+      .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
+      .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+        padding-right: @col-spacing;
+        padding-left: @col-spacing;
+      }
+      .tile {
+        margin-bottom: @col-spacing * 2;
+      }
+      // END - overwrite bootstrap col spacing
+
+      h3, .h3 {
+        &:first-child {
+          margin-top: 15px;
+        }
+      }
+      .btn {
+        font-size: 18px;
+        padding: 20px 12px 15px;
+        > i {
+          font-size: 72px;
+        }
+        > span {
+          display: block;
+        }
+      }
+      .btn-active {
+        .button-variant(@btn-active-color; @btn-active-bg; @btn-active-border);
+      }
+      .btn-inactive {
+        .button-variant(@btn-inactive-color; @btn-inactive-bg; @btn-inactive-border);
+      }
+      .btn-future {
+        .button-variant(@btn-future-color; @btn-future-bg; @btn-future-border);
+      }
+      .info {
+        padding: 10px 12px;
+        color: @btn-active-color;
+        background-color: @btn-inactive-bg;
+        border: 1px solid @btn-inactive-border;
+        border-top: none;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+    &.assignment-overview-inactive {
+      .info {
+        color: @btn-inactive-color;
+      }
+    }
+  }
+
+  // detailview top part
+  section.assignment-detail {
+    font-size: 18px;
+    margin: 20px 0;
+    div.icon {
+      padding: 0 12px;
+      color: @btn-active-color;
+      background-color: @btn-inactive-bg;
+      border: 1px solid @btn-inactive-border;
+      text-align: center;
+      font-size: 72px;
+    }
+    h3, .h3 {
+      font-size: 20px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    h4, .h4 {
+      font-size: 16px;
+    }
+  }
+
+  .assignment-navbar {
+    position: relative;
+    margin-bottom: 10px;
+    border: 1px solid @btn-inactive-border;
+    background-color: @btn-inactive-bg;
+    font-size: 18px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: block;
+      li {
+        display: inline-flex;
+        a {
+          padding: 10px 15px;
+        }
+        .getLinkBgColors(@btn-inactive-bg, lighten(@btn-inactive-bg, 10%), @progress-selected-bg);
+        &.active {
+          .getLinkBgColors(@progress-selected-bg, @progress-selected-bg, @progress-selected-bg);
+          border-left: 1px solid @btn-inactive-border;
+          border-right: 1px solid @btn-inactive-border;
+          &:first-child {
+            border-left: none;
+          }
+        }
+      }
+    }
+  }
+
+  // details inside of features
+  section[class*="assignment-subdetail-"]{
+    font-size: 18px;
+    h3, .h3 {
+      font-size: 20px;
+      &:first-child {
+        margin-top: 20px;
+      }
+    }
+    div.box {
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid @btn-inactive-border;
+      .title {}
+      .date,
+      .date-deactivate {
+        color: @btn-inactive-color;
+        font-size: 14px;
+      }
+    }
+  }
+
+  section.assignment-subdetail-additional-custom-true div.box,
+  section.assignment-subdetail-additional-custom-false div.box,
+  section.assignment-subdetail-include div.box,
+  section.assignment-subdetail-additional-active div.box {
+    color: @btn-active-color;
+    background-color: @btn-active-bg;
+  }
+  section.assignment-subdetail-additional-inactive div.box {
+    color: @btn-inactive-color;
+    background-color: @btn-inactive-bg;
+  }
+  section.assignment-subdetail-additional-future div.box {
+    color: @btn-future-color;
+    background-color: @btn-future-bg;
+  }
+  section.assignment-subdetail-add div.box {
+    border: 1px dotted @btn-inactive-border;
+    cursor: pointer;
+    padding: 25px;
+    .fa {
+      margin-right: 8px;
+    }
+  }
+  section.assignment-subdetail-form div.box {
+    background-color: @btn-inactive-bg;
+    form {
+      label {
+        font-size: 18px;
+        font-weight: 400;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

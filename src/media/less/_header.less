@@ -1,0 +1,89 @@
+header.navbar {
+  .getHeaderFooterDefaults(@header-height, @header-color, @header-top-border-color, @header-bottom-border-color, @header-font-size, @header-icon-font-size);
+  .getBackgroundGradiant(@header-top-bg, @header-bottom-bg, @header-bg);
+  .getLinkColors(@header-link-color, @header-link-hover-color, @header-link-active-color);
+
+  top: 0;
+
+  .getBrandDefault(@header-color, @header-bottom-border-color, @header-color, @header-bottom-border-color, @header-color, @header-bottom-border-color);
+  .navbar-brand {
+    > span {
+      &.first {
+        font-weight: 300;
+      }
+    }
+  }
+
+  .navbar-nav > li {
+    .getLinkColors(@header-link-color, @header-link-hover-color, @header-link-active-color, @header-link-color);
+    .getLinkBgColors(@header-link-bg, @header-link-hover-bg, @header-link-active-bg, @header-link-bg);
+
+    // START - login form only
+    .dropdown-login,
+    .dropdown-profile {
+      text-align: left;
+      color: #000000;
+      font-size: 12px;
+      border: none;
+      border-radius: 0;
+      -webkit-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.175);
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.175);
+      margin: 0;
+    }
+    .dropdown-login {
+      padding: 30px 40px 40px;
+      min-width: 400px;
+      .getLinkColors(#3272fe, #3272fe, #3272fe);
+      .getLinkBgColors(transparent, transparent, transparent);
+      .help-block,
+      .form-control:focus {
+        color: #000000;
+      }
+      .form-group {
+        margin-bottom: 10px;
+      }
+      button,
+      p.help-block {
+        margin-top: 15px;
+      }
+    }
+    .dropdown-profile {
+      .getLinkColors(@basic-color, lighten(@basic-color, 10), @basic-color);
+      .getLinkBgColors(#ffffff, darken(#ffffff, 10), #ffffff);
+      i {
+        margin-right: .25em;
+      }
+    }
+    // END - login form only
+  }
+
+  .nav .open > a,
+  .nav .open > a:hover,
+  .nav .open > a:focus {
+    color: @header-link-active-color;
+    background-color: @header-link-active-bg;
+    border-color: transparent;
+  }
+
+  > div.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand,
+  .navbar > .container-fluid .navbar-brand {
+    margin-left: 0;
+  }
+
+  .navbar-nav.navbar-left:first-child {
+    margin-left: 15px;
+  }
+  .navbar-nav.navbar-right {
+    margin-right: 15px;
+    &:last-child {
+      margin-right: 5px;
+    }
+  }
+}

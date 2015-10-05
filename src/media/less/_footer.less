@@ -1,0 +1,35 @@
+footer {
+  display: none;
+  .getHeaderFooterDefaults(@footer-height, @footer-color, @footer-top-border-color, @footer-bottom-border-color, @footer-font-size, @footer-icon-font-size);
+  .getBackgroundGradiant(@footer-top-bg, @footer-bottom-bg, @footer-bg);
+  .getLinkColors(@footer-link-color, @footer-link-hover-color);
+
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  .getBrandDefault(lighten(@footer-bg, 20), transparent, lighten(@footer-bg, 10), transparent, lighten(@footer-bg, 10), transparent);
+
+  .navbar-brand {
+    > span {
+      &.first {
+        font-weight: 700;
+        font-size: 21px;
+        text-shadow: 0 -1px 0 darken(@footer-bg, 10);
+        text-transform: lowercase;
+      }
+      &.second {
+        font-weight: 700;
+        font-size: 17px;
+        text-shadow: 0 -1px 0 darken(@footer-bg, 10);
+        text-transform: uppercase;
+      }
+      &.third {
+        font-weight: 700;
+        font-size: 17px;
+        text-shadow: 0 -1px 0 darken(@footer-bg, 10);
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.sidebar {
+  position: fixed;
+  top: @header-height;
+  bottom: @footer-height;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: @basic-bg;
+  border-right: 1px solid @basic-border-color;
+
+  div.typeahead {
+    padding: 10px 15px;
+    background-color: darken(@basic-bg, 2);
+    border-bottom: 1px solid @basic-border-color;
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+
+  .getListDefault();
+
+  section {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 14px 15px;
+      font-size: 18px;
+      background-color: lighten(@basic-bg, 3);
+      border-bottom: 1px solid @basic-border-color;
+      &:hover {
+        cursor: pointer;
+        background-color: lighten(@basic-bg, 5);
+      }
+      > .fa.pull-right {
+        margin-left: 0;
+        text-align: right;
+      }
+    }
+  }
+
+  ul.nav-sidebar {
+    li {
+      a {
+        border-bottom: 1px solid @basic-border-color;
+        padding: 7px 15px;
+      }
+    }
+    .fa {
+      margin-right: 5px;
+    }
+  }
+}

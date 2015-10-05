@@ -1,0 +1,283 @@
+.getColor(@color) when (iscolor(@color)) {
+  color: @color;
+}
+
+.getBackgroundColor(@color) when (iscolor(@color)) {
+  background-color: @color;
+}
+
+.getLinkColors(@color, @colorHover: inherit, @colorActive: inherit, @colorFocus: inherit) {
+  a {
+    .getColor(@color);
+    &:hover {
+      .getColor(@colorHover);
+    }
+    &:active {
+      .getColor(@colorActive);
+    }
+    &:focus {
+      .getColor(@colorFocus);
+    }
+  }
+}
+
+.getLinkBgColors(@color, @colorHover: inherit, @colorActive: inherit, @colorFocus: inherit) {
+  a {
+    .getBackgroundColor(@color);
+    &:hover {
+      .getBackgroundColor(@colorHover);
+    }
+    &:active {
+      .getBackgroundColor(@colorActive);
+    }
+    &:focus {
+      .getBackgroundColor(@colorFocus);
+    }
+  }
+}
+
+.getBackgroundGradiant(@colorTop, @colorBottom, @colorFallback) when (iscolor(@colorTop)), (iscolor(@colorBottom)), (iscolor(@colorFallback)) {
+  background-color: @colorFallback;
+
+  /* IE10 Consumer Preview */
+  background-image: -ms-linear-gradient(top, @colorTop 0%, @colorBottom 100%);
+
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, @colorTop 0%, @colorBottom 100%);
+
+  /* Opera */
+  background-image: -o-linear-gradient(top, @colorTop 0%, @colorBottom 100%);
+
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, @colorTop), color-stop(1, @colorBottom));
+
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, @colorTop 0%, @colorBottom 100%);
+
+  /* W3C Markup, IE10 Release Preview */
+  background-image: linear-gradient(to bottom, @colorTop 0%, @colorBottom 100%);
+}
+
+.getBrandDefault(
+  @colorFirst: inherit,
+  @shadowColorFirst: inherit,
+  @colorSecond: inherit,
+  @shadowColorSecond: inherit,
+  @colorThird: inherit,
+  @shadowColorThird: inherit) {
+  .navbar-brand {
+    padding: 11px 0 13px 0;
+    font-size: 17px;
+    line-height: 24px;
+    > span {
+      &.first {
+        .getColor(@colorFirst);
+        text-shadow: 0 1px 1px @shadowColorFirst;
+        font-weight: 700;
+      }
+      &.second {
+        .getColor(@colorSecond);
+        text-shadow: 0 1px 1px @shadowColorSecond;
+        font-weight: 400;
+      }
+      &.third {
+        .getColor(@colorThird);
+        text-shadow: 0 1px 1px @shadowColorThird;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+.getHeaderFooterDefaults(@height, @color, @colorBorderTop, @colorBorderBottom, @fontSize, @iconSize) {
+  font-size: @fontSize;
+  box-sizing: border-box;
+  height: @height;
+  color: @color;
+  border-top: 1px solid @colorBorderTop;
+  border-bottom: 1px solid @colorBorderBottom;
+  z-index: 10;
+  div.col-left,
+  div.col-main-right {
+    top: 0;
+    overflow: visible;
+  }
+  div.col-left {
+    left: 0;
+  }
+  div.col-main-right {
+    right: 0;
+  }
+
+  .navbar-nav {
+    > li {
+      text-align: center;
+      > a {
+        color: #eeeeee;
+        padding: 5px 7px 0;
+        height: @header-height - 2;
+        line-height: @line-height-base;
+        > i {
+          font-size: @iconSize;
+          display: inline-block;
+        }
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.getContentDefaults() {
+  color: @basic-color;
+  background-color: @basic-bg;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.getResponsiveCols(@col-left-width: 20%) {
+  @col-right-width: @col-left-width * 2;
+  @col-main-width: 100 - @col-left-width - @col-right-width;
+  @col-mainright-width: 100 - @col-left-width;
+  .col-left {
+    width: @col-left-width;
+    &.closed {
+      display: none;
+    }
+  }
+
+  .col-right {
+    width: @col-right-width;
+    &.closed {
+      display: none;
+    }
+  }
+
+  .col-main {
+    width: @col-main-width;
+  }
+
+  .col-main-right {
+    width: @col-mainright-width;
+  }
+
+  aside,
+  main {
+    &.col-main {
+      left: @col-left-width;
+      right: @col-right-width;
+      &.left-closed {
+        width: @col-main-width + @col-left-width;
+        left: 0;
+      }
+      &.right-closed {
+        width: @col-main-width + @col-right-width;
+        right: 0;
+      }
+      &.left-closed.right-closed {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.getListDefault() {
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      .getLinkColors(@basic-link-color, @basic-link-hover-color, @basic-link-active-color);
+      .getLinkBgColors(@basic-link-bg, @basic-link-hover-bg, @basic-link-active-bg);
+      &.selected {
+        .getLinkColors(@basic-link-color, @basic-link-hover-color, @basic-link-active-color);
+        .getLinkBgColors(@basic-link-active-bg, @basic-link-active-bg, @basic-link-active-bg);
+      }
+      a {
+        border-bottom: 1px solid @basic-border-color;
+        display: block;
+        padding: 7px 10px;
+        &:hover {
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+// =====================================================================================================================
+// Twitter Bootstrap
+// =====================================================================================================================
+// Button variants
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    color: @color;
+    background-color: darken(@background, 8%);
+    border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background;
+      border-color: @border;
+    }
+  }
+}
+// Custom button variants - for mi24 icon-buttons in tables and lists
+// ------------------------------------------------------------------
+.button-variant-c(@color; @background; @border) {
+  color: @btn-default-color;
+  background-color: @btn-default-bg;
+  border-color: @border;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    color: @color;
+    background-color: @background;
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    background-color: darken(@background, 8%);
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @btn-default-bg;
+      border-color: @border;
+    }
+  }
+}
+
+// =====================================================================================================================

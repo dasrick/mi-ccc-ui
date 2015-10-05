@@ -1,0 +1,130 @@
+@import (inline) "../../../node_modules/angular-toggle-switch/angular-toggle-switch.css";
+@import (inline) "../../../node_modules/angular-toggle-switch/angular-toggle-switch-bootstrap.css";
+@import (inline) "../../../node_modules/mi24-bootstrap/dist/css/mi24-bootstrap.min.css";
+@import (inline) "../../../node_modules/mi24-bootstrap/dist/css/mi24-theme.min.css";
+@import "../../../node_modules/font-awesome/less/font-awesome";
+@import "_fonts";
+@import "_variables";
+@import "_mixins";
+@import "_tags";
+@import "_classes";
+@import "_alerts";
+//@import "_header";
+//@import "_footer";
+//@import "_sidebar";
+@import "_data";
+@import "_diff";
+@import "_wizard";
+@import "_select";
+@import "_loadingbar";
+@import "_assignment";
+@import "_colorpicker";
+
+// START - auslagern
+main > aside.col-main-right > section.section-body {
+  padding: 0 15px 15px;
+}
+
+.level-list li > a .fa {
+  margin-right: .5em;
+}
+
+.cs-1 .level-list > li {
+  > .heading {
+    color: #0f0;
+    text-shadow: 0 -1px 0 #f00;
+    cursor: default;
+  }
+  > ul > li {
+    &:hover {
+      background-color: darken(#ffffff, 5%);
+    }
+    &.selected {
+      background-color: darken(#ffffff, 10%);
+    }
+  }
+}
+
+.cs-2 .level-list > li {
+  > .heading {
+    color: #888;
+    text-shadow: 0 -1px 0 #111;
+    cursor: default;
+  }
+  > ul > li {
+    &:hover {
+      background-color: darken(#333333, 5%);
+    }
+    &.selected {
+      background-color: darken(#333333, 10%);
+    }
+  }
+}
+
+.cs-3 .level-list > li {
+  > .heading {
+    color: #0f0;
+    text-shadow: 0 -1px 0 #f00;
+    cursor: default;
+  }
+  > ul > li {
+    &:hover {
+      background-color: darken(#009339, 5%);
+    }
+    &.selected {
+      background-color: darken(#009339, 10%);
+    }
+  }
+}
+
+// Overloading "glyphicon" class with "fa".
+.glyphicon {
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  // Overloading "glyphicon-chevron-left" with "fa-arrow-left".
+  &.glyphicon-chevron-left:before {
+    content: "\f053";
+  }
+  // Overloading "glyphicon-chevron-right" with "fa-arrow-right".
+  &.glyphicon-chevron-right:before {
+    content: "\f054";
+  }
+}
+
+// ENDE - auslagern
+
+// AngularJS CSS
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+  display: none !important;
+}
+
+ng\:form {
+  display: block;
+}
+
+.ng-animate-block-transitions {
+  transition: 0s all !important;
+}
+
+@media (max-width: 767px) {
+  body > div {
+    display: none;
+  }
+
+  header > aside {
+    display: none;
+    &.col-left.brand {
+      display: block;
+    }
+  }
+
+  .container > .navbar-header,
+  .container-fluid > .navbar-header,
+  .container > .navbar-collapse,
+  .container-fluid > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+

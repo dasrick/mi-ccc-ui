@@ -1,0 +1,242 @@
+::-moz-selection {
+  .getColor(@btn-primary-color);
+  .getBackgroundColor(@btn-primary-bg);
+}
+
+::selection {
+  .getColor(@btn-primary-color);
+  .getBackgroundColor(@btn-primary-bg);
+}
+
+.container {
+  max-width: 100%;
+  width: auto;
+}
+
+.wrapinger {
+  margin: auto 15px;
+  position: relative;
+}
+
+/* overwrite bootstrap */
+.btn {
+  &:focus {
+    outline: 0;
+  }
+  border-radius: 0;
+}
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default {
+  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+}
+
+.btn-primary {
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+
+// Warning appears as orange
+.btn-warning {
+  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+}
+
+// Danger and error appear as red
+.btn-danger {
+  .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+}
+
+// Success appears as green
+.btn-success {
+  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+}
+
+// Info appears as blue-green
+.btn-info {
+  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+}
+
+// custom buttons
+// --------------------------------------------------
+
+.btnc-default {
+  .button-variant-c(@btn-default-color; @btn-default-bg; @basic-color);
+}
+
+.btnc-primary {
+  .button-variant-c(@btn-primary-color; @btn-primary-bg; @basic-color);
+}
+
+// Warning appears as orange
+.btnc-warning {
+  .button-variant-c(@btn-warning-color; @btn-warning-bg; @basic-color);
+}
+
+// Danger and error appear as red
+.btnc-danger {
+  .button-variant-c(@btn-danger-color; @btn-danger-bg; @basic-color);
+}
+
+// Success appears as green
+.btnc-success {
+  .button-variant-c(@btn-success-color; @btn-success-bg; @basic-color);
+}
+
+// Info appears as blue-green
+.btnc-info {
+  .button-variant-c(@btn-info-color; @btn-info-bg; @basic-color);
+}
+
+.btn[class*="btnc-"] {
+  padding: 4px 8px 3px;
+}
+
+.form-control,
+.input-group-addon {
+  border-radius: 0;
+}
+
+.input-group-addon {
+  background-color: @progress-hover-bg;
+  color: #ffffff;
+}
+
+.form-control {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  &:focus {
+    border-color: #222222;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+//.badge {
+//  .getBackgroundColor(@basic-color);
+//  .getColor(@basic-bg);
+//  font-weight: 400;
+//}
+
+.badge-holder {
+  position: relative;
+}
+
+.review-badge {
+  top: 5px;
+  right: 0;
+  position: absolute;
+  .getBackgroundGradiant(#FFD200, #FFB100, #FFB100);
+  color: #333;
+  font-size: 9px;
+  height: 13px;
+  padding: 0px 7px;
+  min-width: 10px;
+  line-height: 13px;
+  border-radius: 3px;
+  box-shadow: 0.5px 0.8px 0.5px 0px #000;
+}
+
+.table {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th {
+        font-weight: 600;
+      }
+      > th,
+      > td {
+        padding: 7px;
+        border-top: 1px solid @basic-border-color;
+        font-size: 18px;
+        .btn {
+          font-size: 22px;
+        }
+        .form-control {
+          height: 45px;
+        }
+        // START - unwrapping buttongroups in responsive tables
+        &:last-child {
+          white-space: nowrap;
+          .btn-group {
+            white-space: nowrap;
+            margin-left: 5px;
+            .btn {
+              float: none;
+              display: inline-block;
+              margin-left: -5px;
+            }
+          }
+        }
+        // END - unwrapping buttongroups in responsive tables
+      }
+      &:last-child {
+        > th,
+        > td {
+          border-bottom: 1px solid @basic-border-color;
+        }
+      }
+    }
+  }
+  > tbody + tbody {
+    border-top: inherit;
+  }
+}
+
+.table-hover {
+  > tbody {
+    > tr {
+      // standard
+      > td,
+      > th {
+        background-color: @basic-bg;
+      }
+      // standard-hover
+      &:hover {
+        > td,
+        > th {
+          background-color: @basic-hover-bg;
+        }
+      }
+      // inactive
+      &.inactive {
+        // inactive-hover
+        > td,
+        > th {
+          background-color: @basic-resumable-bg;
+        }
+        &:hover {
+          > td,
+          > th {
+            background-color: @basic-resumable-hover-bg;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-header {
+  h3 {
+    margin-top: 10px;
+  }
+}
+
+.modal-footer {
+  margin-top: 0;
+}
+
+.fa {
+  min-width: 1em;
+}
+
+.duration-group {
+  margin-bottom: 15px;
+}

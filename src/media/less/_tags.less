@@ -1,0 +1,24 @@
+body {
+  font-size: @basic-font-size;
+  line-height: @basic-line-height;
+  background-color: #fff;
+  color: @basic-color;
+  font-family: @basic-font-family;
+//  padding-top: @header-height;
+//  padding-bottom: @footer-height;
+}
+
+a {
+  color: @basic-link-color;
+  &:hover {
+    color: @basic-link-hover-color;
+  }
+  &:focus {
+    outline: none;
+    outline-offset: 0;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @basic-font-family;
+}

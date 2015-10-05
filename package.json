@@ -67,6 +67,12 @@
   },
   "scripts": {
     "start": "node index.js",
+
+    "prebuild": "mkdir -p app/css",
+    "build": "npm run build:css",
+
+    "build:css": "lessc --clean-css='--s1' --autoprefix='last 2 versions' src/media/less/style.less app/css/style.css",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

@@ -1,0 +1,39 @@
+#ccc-alerts {
+  box-sizing: border-box;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1066;
+  padding-left: 0;
+  padding-right: 0;
+  color: transparent;
+  .alert {
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: @header-height;
+    padding: 14px 15px;
+    animation: slideDown 5s 0s 1 ease forwards;
+    // messages are inside of this div
+    > div {
+      overflow: hidden;
+      height: 1.5em;
+    }
+    button.close {
+      padding-left: 10px;
+      right: 0;
+    }
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-@header-height);
+  }
+  10%, 100% {
+    transform: translateY(0px);
+  }
+}
